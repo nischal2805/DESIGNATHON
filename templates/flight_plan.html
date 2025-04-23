@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviation Weather Briefing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="/static/flight_plan.css">
+    <link rel="stylesheet" href="/static/weather-animations.css">
+</head>
+<body class="light-mode">
+    <div class="theme-toggle">
+        <input type="checkbox" id="theme-switch">
+        <label for="theme-switch" class="toggle-label">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+            <span class="toggle-ball"></span>
+        </label>
+    </div>
+
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-plane"></i>
+                <h1>AviWeather</h1>
+            </div>
+            <nav>
+                <a href="/" class="nav-link">Home</a>
+                <a href="/flight-plan" class="nav-link active">Flight Planner</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="flight-plan-section">
+                <div class="section-header">
+                    <h2>Flight Route Weather Briefing</h2>
+                    <p>Enter your flight route in format: ICAO,ALTITUDE,ICAO,ALTITUDE (e.g. KPHX,5000,KBXK,7000)</p>
+                </div>
+
+                <div class="flight-form-container">
+                    <form id="flight-plan-form">
+                        <div class="route-input-container">
+                            <label for="route-input">Route with Altitudes</label>
+                            <input type="text" id="route-input" class="route-input-field" 
+                                   placeholder="KPHX,5000,KBXK,7000,KLVS,8000" required>
+                            <div class="route-help">
+                                <i class="fas fa-info-circle"></i>
+                                <span class="route-help-text">Enter airport codes and altitudes in feet separated by commas</span>
+                            </div>
+                        </div>
+
+                        <div class="sigmet-options">
+                            <div class="option-group">
+                                <label>SIGMET Region</label>
+                                <select id="region">
+                                    <option value="all">All Regions</option>
+                                    <option value="namer">North America</option>
+                                    <option value="eur">Europe</option>
+                                    <option value="asia">Asia</option>
+                                </select>
+                            </div>
+                            <div class="option-group">
+                                <label>Hazard Type</label>
+                                <select id="hazard">
+                                    <option value="all">All Hazards</option>
+                                    <option value="conv">Thunderstorms</option>
+                                    <option value="turb">Turbulence</option>
+                                    <option value="ice">Icing</option>
+                                    <option value="ash">Volcanic Ash</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="submit-btn">Generate Briefing</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <div class="loading" id="loading">
+                <div class="radar-spinner"></div>
+                <p>Analyzing weather conditions along your route...</p>
+            </div>
+
+            <section class="briefing-section" id="briefing-section">
+                <div class="section-header">
+                    <h2>Weather Briefing</h2>
+                    <div class="route-display" id="route-display"></div>
+                </div>
+
+                <!-- Flight Profile Visualization -->
+                <div class="flight-profile-container">
+                    <h3>Flight Altitude Profile</h3>
+                    <div id="flight-profile"></div>
+                </div>
+
+                <!-- Map Section -->
+                <div class="map-container">
+                    <div id="weather-map"></div>
+                </div>
+
+                <!-- Weather Report Tiles -->
+                <div class="briefing-tiles">
+                    <div class="tile summary-tile">
+                        <div class="tile-header">
+                            <i class="fas fa-info-circle"></i>
+                            <h3>Flight Overview</h3>
+                        </div>
+                        <div class="tile-content" id="summary-content"></div>
+                    </div>
+                    
+                    <div class="tile hazards-tile">
+                        <div class="tile-header">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h3>Hazard Alerts</h3>
+                        </div>
+                        <div class="tile-content" id="hazards-content"></div>
+                    </div>
+                    
+                    <div class="tile pireps-tile">
+                        <div class="tile-header">
+                            <i class="fas fa-headset"></i>
+                            <h3>Pilot Reports</h3>
+                        </div>
+                        <div class="tile-content" id="pireps-content"></div>
+                    </div>
+                    
+                    <div class="tile sigmets-tile">
+                        <div class="tile-header">
+                            <i class="fas fa-cloud-bolt"></i>
+                            <h3>SIGMETs</h3>
+                        </div>
+                        <div class="tile-content" id="sigmets-content"></div>
+                    </div>
+                    
+                    <div class="tile conditions-tile">
+                        <div class="tile-header">
+                            <i class="fas fa-cloud-sun"></i>
+                            <h3>Flight Conditions</h3>
+                        </div>
+                        <div class="tile-content" id="conditions-content"></div>
+                    </div>
+                    
+                    <div class="tile recommendations-tile">
+                        <div class="tile-header">
+                            <i class="fas fa-route"></i>
+                            <h3>Recommendations</h3>
+                        </div>
+                        <div class="tile-content" id="recommendations-content"></div>
+                    </div>
+                </div>
+                
+                <!-- Flight Data Table -->
+                <div class="flight-data-container">
+                    <h3>Flight Data</h3>
+                    <table class="flight-data-table">
+                        <thead>
+                            <tr>
+                                <th>Waypoint</th>
+                                <th>Altitude (ft)</th>
+                                <th>Distance (nm)</th>
+                                <th>Headwind/Tailwind</th>
+                                <th>Estimated Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="flight-data-body">
+                            <!-- This will be filled dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <!-- Printable Briefing Section -->
+            <section class="printable-section">
+                <div class="print-actions">
+                    <button id="print-briefing" class="print-btn">
+                        <i class="fas fa-print"></i> Print Briefing
+                    </button>
+                    <button id="download-pdf" class="download-btn">
+                        <i class="fas fa-file-pdf"></i> Download PDF
+                    </button>
+                </div>
+                <div class="printable-content" id="printable-content">
+                    <!-- Content for printing will be inserted here -->
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-plane"></i>
+                    <span>AviWeather</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Terms</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Support</a>
+                </div>
+            </div>
+            <div class="footer-credits">
+                <p>&copy; 2025 AviWeather - Aviation Weather Briefing Service</p>
+                <p>Data provided by Aviation Weather Center & OpenWeatherMap</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/flight_plan.js"></script>
+    
+    <!-- Print functionality -->
+    <script>
+        document.getElementById('print-briefing').addEventListener('click', function() {
+            // Copy briefing content to printable div
+            const printableDiv = document.getElementById('printable-content');
+            
+            // Add title and timestamp
+            const now = new Date();
+            const formattedDate = now.toLocaleString();
+            
+            // Get route for the header
+            const routeText = document.querySelector('.route-display').textContent;
+            
+            printableDiv.innerHTML = `
+                <div class="print-header">
+                    <h1>Flight Weather Briefing</h1>
+                    <p>${formattedDate}</p>
+                    <p>Route: ${routeText}</p>
+                </div>
+            `;
+            
+            // Add content from each section
+            const sections = ['summary-content', 'hazards-content', 'conditions-content', 
+                              'pireps-content', 'sigmets-content', 'recommendations-content'];
+            
+            sections.forEach(id => {
+                const content = document.getElementById(id);
+                if (content) {
+                    const header = content.closest('.tile').querySelector('.tile-header h3').textContent;
+                    printableDiv.innerHTML += `
+                        <div class="print-section">
+                            <h2>${header}</h2>
+                            ${content.innerHTML}
+                        </div>
+                    `;
+                }
+            });
+            
+            // Print the document
+            window.print();
+        });
+        
+        document.getElementById('download-pdf').addEventListener('click', function() {
+            alert("PDF download functionality would be implemented here with a library like jsPDF");
+            // In a real implementation, you would use jsPDF or similar to generate a PDF
+        });
+    </script>
+</body>
+</html>

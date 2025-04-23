@@ -1,0 +1,33 @@
+{
+  "name": "flight-planner",
+  "version": "1.0.0",
+  "description": "A dynamic flight planning web application that processes real user input for any airport, displays real-time weather data, and incorporates animations.",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "axios": "^0.21.1",
+    "leaflet": "^1.7.1",
+    "animate.css": "^4.1.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.4",
+    "style-loader": "^2.0.0",
+    "html-webpack-plugin": "^5.3.1"
+  },
+  "keywords": [
+    "flight",
+    "planning",
+    "weather",
+    "animation"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

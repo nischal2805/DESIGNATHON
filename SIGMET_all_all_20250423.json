@@ -1,0 +1,617 @@
+{
+    "region": "all",
+    "hazard": "all",
+    "timestamp": "2025-04-23T14:44:03.386483",
+    "data": [
+        {
+            "isigmetId": 989301,
+            "icaoId": "SARE",
+            "firId": "SARR",
+            "firName": "SARR RESISTENCIA",
+            "receiptTime": "2025-04-23 05:21:06",
+            "validTimeFrom": 1745385900,
+            "validTimeTo": 1745400300,
+            "seriesId": "2",
+            "hazard": "TURB",
+            "qualifier": "SEV",
+            "base": 24000,
+            "top": 40000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": -23.017,
+                    "lon": -62.067
+                },
+                {
+                    "lat": -26.767,
+                    "lon": -61.883
+                },
+                {
+                    "lat": -28.8,
+                    "lon": -61.1
+                },
+                {
+                    "lat": -30.067,
+                    "lon": -57.55
+                },
+                {
+                    "lat": -28.017,
+                    "lon": -55.6
+                },
+                {
+                    "lat": -27.55,
+                    "lon": -54.783
+                },
+                {
+                    "lat": -27,
+                    "lon": -53.717
+                },
+                {
+                    "lat": -26.367,
+                    "lon": -53.667
+                },
+                {
+                    "lat": -25.05,
+                    "lon": -53.933
+                },
+                {
+                    "lat": -25.05,
+                    "lon": -54.45
+                },
+                {
+                    "lat": -26.533,
+                    "lon": -54.783
+                },
+                {
+                    "lat": -27.267,
+                    "lon": -55.567
+                },
+                {
+                    "lat": -27.05,
+                    "lon": -56.317
+                },
+                {
+                    "lat": -27.267,
+                    "lon": -58.667
+                },
+                {
+                    "lat": -25.517,
+                    "lon": -57.6
+                },
+                {
+                    "lat": -25,
+                    "lon": -58.367
+                },
+                {
+                    "lat": -23.933,
+                    "lon": -60.117
+                },
+                {
+                    "lat": -23.717,
+                    "lon": -61.083
+                },
+                {
+                    "lat": -23.017,
+                    "lon": -62.067
+                }
+            ],
+            "dir": "-",
+            "spd": 0,
+            "chng": "NC",
+            "rawSigmet": "WSAG31 SARE 230525\nSARR SIGMET 2 VALID 230525/230925 SARE-\nSARR RESISTENCIA FIR SEV TURB FCST AT 0525Z\nWI S2301 W06204 - S2646 W06153 - S2848 W06106 - S3004 W05733 - S2801\nW05536 - S2733 W05447 - S2700 W05343 - S2622 W05340 - S2503 W05356 - \nS2503 W05427 - S2632 W05447 - S2716 W05534 - S2703 W05619 - S2716 \nW05840 - S2531 W05736 - S2500 W05822 - S2356 W06007 - S2343 W06105 - \nS2301 W06204 FL240/400 STNR NC="
+        },
+        {
+            "isigmetId": 989304,
+            "icaoId": "WAAA",
+            "firId": "WAAF",
+            "firName": "WAAF UJUNG PANDANG",
+            "receiptTime": "2025-04-23 05:31:16",
+            "validTimeFrom": 1745385900,
+            "validTimeTo": 1745400300,
+            "seriesId": "14",
+            "hazard": "TS",
+            "qualifier": "EMBD",
+            "base": null,
+            "top": null,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": 3.533,
+                    "lon": 127.2
+                },
+                {
+                    "lat": 2.883,
+                    "lon": 127.75
+                },
+                {
+                    "lat": 2.167,
+                    "lon": 126.35
+                },
+                {
+                    "lat": 2.333,
+                    "lon": 123.467
+                },
+                {
+                    "lat": 2.933,
+                    "lon": 120.833
+                },
+                {
+                    "lat": 3.35,
+                    "lon": 120.833
+                },
+                {
+                    "lat": 3.533,
+                    "lon": 127
+                }
+            ],
+            "dir": null,
+            "spd": null,
+            "chng": null,
+            "rawSigmet": "WSID21 WAAA 230525\nWAAF SIGMET 14 VALID 230525/230925 WAAA-\nWAAF UJUNG PANDANG FIR EMBD TS OBS WI N0332 E12712 - N0253 E12745 - N\n0210 E12621 - N0220 E12328 - N0256 E12050 - N0321 E12050 - N0332 E127\n12 TOP FL530 MOV W 15KT NC="
+        },
+        {
+            "isigmetId": 989300,
+            "icaoId": "BGSF",
+            "firId": "BGGL",
+            "firName": "BGGL NUUK",
+            "receiptTime": "2025-04-23 05:11:00",
+            "validTimeFrom": 1745386200,
+            "validTimeTo": 1745400600,
+            "seriesId": "U02",
+            "hazard": "TURB",
+            "qualifier": "SEV",
+            "base": 0,
+            "top": 11000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": 59.583,
+                    "lon": -43.033
+                },
+                {
+                    "lat": 60,
+                    "lon": -45.1
+                },
+                {
+                    "lat": 61.383,
+                    "lon": -44.933
+                },
+                {
+                    "lat": 60.983,
+                    "lon": -42.283
+                },
+                {
+                    "lat": 59.583,
+                    "lon": -43.033
+                }
+            ],
+            "dir": null,
+            "spd": null,
+            "chng": "NC",
+            "rawSigmet": "WSGL31 BGSF 230510\nBGGL SIGMET U02 VALID 230530/230930 BGSF-\nBGGL NUUK FIR SEV TURB FCST AT 0530Z WI N5935 W04302 - N6000 W04506 -\n N6123 W04456 - N6059 W04217 - N5935 W04302 SFC/FL110 NC FCST AT \n0930Z WI N6202 W04147 - N5936 W04314 - N5951 W04451 - N6131 W04522 - \nN6102 W04352 - N6202 W04255 - N6202 W04147="
+        },
+        {
+            "isigmetId": 989305,
+            "icaoId": "WAAA",
+            "firId": "WAAF",
+            "firName": "WAAF UJUNG PANDANG",
+            "receiptTime": "2025-04-23 05:32:19",
+            "validTimeFrom": 1745386200,
+            "validTimeTo": 1745400600,
+            "seriesId": "17",
+            "hazard": "TS",
+            "qualifier": "EMBD",
+            "base": null,
+            "top": 51000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": 1.05,
+                    "lon": 120.85
+                },
+                {
+                    "lat": -4.067,
+                    "lon": 116.9
+                },
+                {
+                    "lat": -0.783,
+                    "lon": 116.167
+                },
+                {
+                    "lat": 1.05,
+                    "lon": 120.85
+                }
+            ],
+            "dir": "W",
+            "spd": 10,
+            "chng": "INTSF",
+            "rawSigmet": "WSID21 WAAA 230530\nWAAF SIGMET 17 VALID 230530/230930 WAAA-\nWAAF UJUNG PANDANG FIR EMBD TS OBS WI N0103 E12051 - S0404 E11654 - S\n0047 E11610 - N0103 E12051 TOP FL510 MOV W 10KT INTSF="
+        },
+        {
+            "isigmetId": 989309,
+            "icaoId": "VCBI",
+            "firId": "VCCF",
+            "firName": "VCCF COLOMBO",
+            "receiptTime": "2025-04-23 05:46:00",
+            "validTimeFrom": 1745386800,
+            "validTimeTo": 1745401200,
+            "seriesId": "B01",
+            "hazard": "TS",
+            "qualifier": "EMBD",
+            "base": null,
+            "top": 48000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": 7.167,
+                    "lon": 78.583
+                },
+                {
+                    "lat": 8.633,
+                    "lon": 79.317
+                },
+                {
+                    "lat": 8.35,
+                    "lon": 80.517
+                },
+                {
+                    "lat": 6.667,
+                    "lon": 79.883
+                },
+                {
+                    "lat": 7.167,
+                    "lon": 78.583
+                }
+            ],
+            "dir": "-",
+            "spd": 0,
+            "chng": "NC",
+            "rawSigmet": "WSSB31 VCBI 230540\nVCCF SIGMET B01 VALID 230540/230940 VCBI-\nVCCF COLOMBO FIR EMBD TS OBS WI\nN0710 E07835 - N0838 E07919 -\nN0821 E08031 - N0640 E07953 -\nN0710 E07835 TOP FL480 STNR NC="
+        },
+        {
+            "isigmetId": 989327,
+            "icaoId": "WAAA",
+            "firId": "WAAF",
+            "firName": "WAAF UJUNG PANDANG",
+            "receiptTime": "2025-04-23 06:06:21",
+            "validTimeFrom": 1745387700,
+            "validTimeTo": 1745402100,
+            "seriesId": "19",
+            "hazard": "TS",
+            "qualifier": "EMBD",
+            "base": null,
+            "top": 52000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": -4.633,
+                    "lon": 125.917
+                },
+                {
+                    "lat": -4.8,
+                    "lon": 128.767
+                },
+                {
+                    "lat": -5.8,
+                    "lon": 129.617
+                },
+                {
+                    "lat": -6.383,
+                    "lon": 127.533
+                },
+                {
+                    "lat": -4.917,
+                    "lon": 125.483
+                },
+                {
+                    "lat": -4.633,
+                    "lon": 125.917
+                }
+            ],
+            "dir": null,
+            "spd": null,
+            "chng": null,
+            "rawSigmet": "WSID21 WAAA 230555\nWAAF SIGMET 19 VALID 230555/230955 WAAA-\nWAAF UJUNG PANDANG FIR EMBD TS OBS WI S0438 E12555 - S0448 E12846 - S\n0548 E12937 - S0623 E12732 - S0455 E12529 - S0438 E12555 TOP FL520 MO\nV W 10KT NC="
+        },
+        {
+            "isigmetId": 989329,
+            "icaoId": "WAAA",
+            "firId": "WAAF",
+            "firName": "WAAF UJUNG PANDANG",
+            "receiptTime": "2025-04-23 06:06:33",
+            "validTimeFrom": 1745387700,
+            "validTimeTo": 1745402100,
+            "seriesId": "20",
+            "hazard": "TS",
+            "qualifier": "EMBD",
+            "base": null,
+            "top": 50000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": -6.017,
+                    "lon": 136.467
+                },
+                {
+                    "lat": -7.083,
+                    "lon": 134.733
+                },
+                {
+                    "lat": -7.783,
+                    "lon": 132.25
+                },
+                {
+                    "lat": -5.633,
+                    "lon": 132.367
+                },
+                {
+                    "lat": -5,
+                    "lon": 135.017
+                },
+                {
+                    "lat": -6.017,
+                    "lon": 136.467
+                }
+            ],
+            "dir": null,
+            "spd": null,
+            "chng": null,
+            "rawSigmet": "WSID21 WAAA 230555\nWAAF SIGMET 20 VALID 230555/230955 WAAA-\nWAAF UJUNG PANDANG FIR EMBD TS OBS WI S0601 E13628 - S0705 E13444 - S\n0747 E13215 - S0538 E13222 - S0500 E13501 - S0601 E13628 TOP FL500 MO\nV WNW 10KT NC="
+        },
+        {
+            "isigmetId": 989284,
+            "icaoId": "RUNW",
+            "firId": "UNNT",
+            "firName": "UNNT NOVOSIBIRSK",
+            "receiptTime": "2025-04-23 04:31:51",
+            "validTimeFrom": 1745388000,
+            "validTimeTo": 1745402400,
+            "seriesId": "1",
+            "hazard": "TS",
+            "qualifier": "EMBD",
+            "base": null,
+            "top": 36000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": 60.668,
+                    "lon": 80.35
+                },
+                {
+                    "lat": 60.661,
+                    "lon": 80.284
+                },
+                {
+                    "lat": 58.2,
+                    "lon": 72.85
+                },
+                {
+                    "lat": 54.103,
+                    "lon": 72.85
+                },
+                {
+                    "lat": 54.099,
+                    "lon": 73.045
+                },
+                {
+                    "lat": 53.916,
+                    "lon": 73.561
+                },
+                {
+                    "lat": 53.588,
+                    "lon": 73.225
+                },
+                {
+                    "lat": 53.425,
+                    "lon": 73.496
+                },
+                {
+                    "lat": 53.651,
+                    "lon": 73.898
+                },
+                {
+                    "lat": 53.484,
+                    "lon": 74.405
+                },
+                {
+                    "lat": 54.226,
+                    "lon": 75.911
+                },
+                {
+                    "lat": 54.416,
+                    "lon": 76.869
+                },
+                {
+                    "lat": 54.062,
+                    "lon": 76.499
+                },
+                {
+                    "lat": 53.298,
+                    "lon": 77.874
+                },
+                {
+                    "lat": 51.9,
+                    "lon": 79.212
+                },
+                {
+                    "lat": 50.763,
+                    "lon": 80.056
+                },
+                {
+                    "lat": 50.87,
+                    "lon": 80.35
+                },
+                {
+                    "lat": 60.668,
+                    "lon": 80.35
+                }
+            ],
+            "dir": "E",
+            "spd": 27,
+            "chng": "NC",
+            "rawSigmet": "WSRA31 RUNW 230431\nUNNT SIGMET 1 VALID 230600/231000 UNNT-\nUNNT NOVOSIBIRSK FIR EMBD TSGR FCST S OF LINE N6041 E08021 - N5812\nE07251 TOP FL360 MOV E 50KMH NC="
+        },
+        {
+            "isigmetId": 989308,
+            "icaoId": "UBBB",
+            "firId": "UBBB",
+            "firName": "UBBA BAKU",
+            "receiptTime": "2025-04-23 05:44:28",
+            "validTimeFrom": 1745388000,
+            "validTimeTo": 1745402400,
+            "seriesId": "2",
+            "hazard": "TS",
+            "qualifier": "EMBD",
+            "base": null,
+            "top": 34000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": 41.613,
+                    "lon": 47
+                },
+                {
+                    "lat": 41.868,
+                    "lon": 46.756
+                },
+                {
+                    "lat": 41.906,
+                    "lon": 46.421
+                },
+                {
+                    "lat": 41.757,
+                    "lon": 46.188
+                },
+                {
+                    "lat": 41.549,
+                    "lon": 46.244
+                },
+                {
+                    "lat": 41.3,
+                    "lon": 46.717
+                },
+                {
+                    "lat": 41.079,
+                    "lon": 46.516
+                },
+                {
+                    "lat": 41.171,
+                    "lon": 45.887
+                },
+                {
+                    "lat": 41.463,
+                    "lon": 45.312
+                },
+                {
+                    "lat": 41.266,
+                    "lon": 44.986
+                },
+                {
+                    "lat": 40.862,
+                    "lon": 45.567
+                },
+                {
+                    "lat": 40.685,
+                    "lon": 45.379
+                },
+                {
+                    "lat": 40.474,
+                    "lon": 45.475
+                },
+                {
+                    "lat": 40.256,
+                    "lon": 45.99
+                },
+                {
+                    "lat": 40.029,
+                    "lon": 45.87
+                },
+                {
+                    "lat": 40.01,
+                    "lon": 45.568
+                },
+                {
+                    "lat": 39.602,
+                    "lon": 46.186
+                },
+                {
+                    "lat": 39.545,
+                    "lon": 46.542
+                },
+                {
+                    "lat": 39.412,
+                    "lon": 46.396
+                },
+                {
+                    "lat": 39.214,
+                    "lon": 46.591
+                },
+                {
+                    "lat": 39.176,
+                    "lon": 46.46
+                },
+                {
+                    "lat": 38.869,
+                    "lon": 46.538
+                },
+                {
+                    "lat": 39.153,
+                    "lon": 47
+                },
+                {
+                    "lat": 41.613,
+                    "lon": 47
+                }
+            ],
+            "dir": "E",
+            "spd": 20,
+            "chng": "NC",
+            "rawSigmet": "WSAJ31 UBBB 230543\nUBBB SIGMET 2 VALID 230600/231000 UBBB-\nUBBA BAKU FIR EMBD TS FCST W OF E047 TOP FL340 MOV E 20KT NC="
+        },
+        {
+            "isigmetId": 989310,
+            "icaoId": "FAOR",
+            "firId": "FAJO",
+            "firName": "FAJO JOHANNESBURG OCEANIC",
+            "receiptTime": "2025-04-23 05:51:33",
+            "validTimeFrom": 1745388000,
+            "validTimeTo": 1745402400,
+            "seriesId": "K02",
+            "hazard": "TS",
+            "qualifier": "EMBD",
+            "base": null,
+            "top": 34000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": -42.3,
+                    "lon": 17.117
+                },
+                {
+                    "lat": -44.533,
+                    "lon": 31.667
+                },
+                {
+                    "lat": -54.367,
+                    "lon": 44.05
+                },
+                {
+                    "lat": -57.317,
+                    "lon": 37.2
+                },
+                {
+                    "lat": -47.55,
+                    "lon": 23.767
+                },
+                {
+                    "lat": -46.983,
+                    "lon": 12.983
+                }
+            ],
+            "dir": null,
+            "spd": null,
+            "chng": null,
+            "rawSigmet": "WSZA21 FAOR 230549\nFAJO SIGMET K02 VALID 230600/231000 FAOR-\nFAJO JOHANNESBURG OCEANIC FIR EMBD TS FCST WI\nS4218 E01707 - S4432 E03140 - S5422 E04403 - S5719 E03712 -\nS4733 E02346 - S4659 E01259 TOP FL340="
+        }
+    ]
+}

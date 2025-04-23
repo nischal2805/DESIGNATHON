@@ -1,0 +1,138 @@
+{
+    "region": "namer",
+    "hazard": "all",
+    "timestamp": "2025-04-23T13:44:43.071596",
+    "data": [
+        {
+            "isigmetId": 989302,
+            "icaoId": "PHFO",
+            "firId": "KZAK",
+            "firName": "OAKLAND OCEANIC",
+            "receiptTime": "2025-04-23 05:23:14",
+            "validTimeFrom": 1745385900,
+            "validTimeTo": 1745400300,
+            "seriesId": "ROMEO 9",
+            "hazard": "TS",
+            "qualifier": "FRQ",
+            "base": null,
+            "top": 50000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": 29.5,
+                    "lon": -162.75
+                },
+                {
+                    "lat": 28.25,
+                    "lon": -156.75
+                },
+                {
+                    "lat": 22.75,
+                    "lon": -158.5
+                },
+                {
+                    "lat": 22.25,
+                    "lon": -159.5
+                },
+                {
+                    "lat": 21.75,
+                    "lon": -164.25
+                },
+                {
+                    "lat": 29.5,
+                    "lon": -162.75
+                }
+            ],
+            "dir": "E",
+            "spd": 30,
+            "chng": "NC",
+            "rawSigmet": "WSPA05 PHFO 230525\nSIGPAR\nKZAK SIGMET ROMEO 9 VALID 230525/230925 KKCI-\nOAKLAND OCEANIC FIR FRQ TS OBS AT 0525Z WI N2930 W16245 - N2815\nW15645 - N2245 W15830 - N2215 W15930 - N2145 W16415 - N2930\nW16245. TOP FL500. MOV E 30KT. NC."
+        },
+        {
+            "isigmetId": 989359,
+            "icaoId": "KKCI",
+            "firId": "KZWY",
+            "firName": "NEW YORK OCEANIC",
+            "receiptTime": "2025-04-23 06:50:30",
+            "validTimeFrom": 1745391300,
+            "validTimeTo": 1745405700,
+            "seriesId": "DELTA 1",
+            "hazard": "TS",
+            "qualifier": "FRQ",
+            "base": null,
+            "top": 44000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": 38.75,
+                    "lon": -69
+                },
+                {
+                    "lat": 38.5,
+                    "lon": -66.75
+                },
+                {
+                    "lat": 36,
+                    "lon": -73
+                },
+                {
+                    "lat": 37.25,
+                    "lon": -73
+                },
+                {
+                    "lat": 38.75,
+                    "lon": -69
+                }
+            ],
+            "dir": "ESE",
+            "spd": 25,
+            "chng": "NC",
+            "rawSigmet": "WSNT04 KKCI 230655\nSIGA0D\nKZWY SIGMET DELTA 1 VALID 230655/231055 KKCI-\nNEW YORK OCEANIC FIR FRQ TS OBS AT 0655Z WI N3845 W06900 - N3830\nW06645 - N3600 W07300 - N3715 W07300 - N3845 W06900. TOP FL440.\nMOV ESE 25KT. NC."
+        },
+        {
+            "isigmetId": 989377,
+            "icaoId": "KKCI",
+            "firId": "KZWY",
+            "firName": "NEW YORK OCEANIC",
+            "receiptTime": "2025-04-23 07:31:32",
+            "validTimeFrom": 1745393700,
+            "validTimeTo": 1745408100,
+            "seriesId": "CHARLIE 3",
+            "hazard": "TS",
+            "qualifier": "FRQ",
+            "base": null,
+            "top": 44000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": 26,
+                    "lon": -55.25
+                },
+                {
+                    "lat": 25.25,
+                    "lon": -52.75
+                },
+                {
+                    "lat": 23.75,
+                    "lon": -54
+                },
+                {
+                    "lat": 23.75,
+                    "lon": -55.75
+                },
+                {
+                    "lat": 25.75,
+                    "lon": -57.5
+                },
+                {
+                    "lat": 26,
+                    "lon": -55.25
+                }
+            ],
+            "dir": "N",
+            "spd": 5,
+            "chng": "NC",
+            "rawSigmet": "WSNT03 KKCI 230735\nSIGA0C\nKZWY SIGMET CHARLIE 3 VALID 230735/231135 KKCI-\nNEW YORK OCEANIC FIR FRQ TS OBS AT 0735Z WI N2600 W05515 - N2515\nW05245 - N2345 W05400 - N2345 W05545 - N2545 W05730 - N2600\nW05515. TOP FL440. MOV N 5KT. NC."
+        }
+    ]
+}
