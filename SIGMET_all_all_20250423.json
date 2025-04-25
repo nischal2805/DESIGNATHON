@@ -1,114 +1,17 @@
 {
     "region": "all",
     "hazard": "all",
-    "timestamp": "2025-04-23T14:44:03.386483",
+    "timestamp": "2025-04-23T23:47:54.454859",
     "data": [
         {
-            "isigmetId": 989301,
-            "icaoId": "SARE",
-            "firId": "SARR",
-            "firName": "SARR RESISTENCIA",
-            "receiptTime": "2025-04-23 05:21:06",
-            "validTimeFrom": 1745385900,
-            "validTimeTo": 1745400300,
-            "seriesId": "2",
-            "hazard": "TURB",
-            "qualifier": "SEV",
-            "base": 24000,
-            "top": 40000,
-            "geom": "AREA",
-            "coords": [
-                {
-                    "lat": -23.017,
-                    "lon": -62.067
-                },
-                {
-                    "lat": -26.767,
-                    "lon": -61.883
-                },
-                {
-                    "lat": -28.8,
-                    "lon": -61.1
-                },
-                {
-                    "lat": -30.067,
-                    "lon": -57.55
-                },
-                {
-                    "lat": -28.017,
-                    "lon": -55.6
-                },
-                {
-                    "lat": -27.55,
-                    "lon": -54.783
-                },
-                {
-                    "lat": -27,
-                    "lon": -53.717
-                },
-                {
-                    "lat": -26.367,
-                    "lon": -53.667
-                },
-                {
-                    "lat": -25.05,
-                    "lon": -53.933
-                },
-                {
-                    "lat": -25.05,
-                    "lon": -54.45
-                },
-                {
-                    "lat": -26.533,
-                    "lon": -54.783
-                },
-                {
-                    "lat": -27.267,
-                    "lon": -55.567
-                },
-                {
-                    "lat": -27.05,
-                    "lon": -56.317
-                },
-                {
-                    "lat": -27.267,
-                    "lon": -58.667
-                },
-                {
-                    "lat": -25.517,
-                    "lon": -57.6
-                },
-                {
-                    "lat": -25,
-                    "lon": -58.367
-                },
-                {
-                    "lat": -23.933,
-                    "lon": -60.117
-                },
-                {
-                    "lat": -23.717,
-                    "lon": -61.083
-                },
-                {
-                    "lat": -23.017,
-                    "lon": -62.067
-                }
-            ],
-            "dir": "-",
-            "spd": 0,
-            "chng": "NC",
-            "rawSigmet": "WSAG31 SARE 230525\nSARR SIGMET 2 VALID 230525/230925 SARE-\nSARR RESISTENCIA FIR SEV TURB FCST AT 0525Z\nWI S2301 W06204 - S2646 W06153 - S2848 W06106 - S3004 W05733 - S2801\nW05536 - S2733 W05447 - S2700 W05343 - S2622 W05340 - S2503 W05356 - \nS2503 W05427 - S2632 W05447 - S2716 W05534 - S2703 W05619 - S2716 \nW05840 - S2531 W05736 - S2500 W05822 - S2356 W06007 - S2343 W06105 - \nS2301 W06204 FL240/400 STNR NC="
-        },
-        {
-            "isigmetId": 989304,
-            "icaoId": "WAAA",
-            "firId": "WAAF",
-            "firName": "WAAF UJUNG PANDANG",
-            "receiptTime": "2025-04-23 05:31:16",
-            "validTimeFrom": 1745385900,
-            "validTimeTo": 1745400300,
-            "seriesId": "14",
+            "isigmetId": 989593,
+            "icaoId": "FMMI",
+            "firId": "FMMM",
+            "firName": "FMMM ANTANANARIVO",
+            "receiptTime": "2025-04-23 14:17:57",
+            "validTimeFrom": 1745417880,
+            "validTimeTo": 1745432280,
+            "seriesId": "A1",
             "hazard": "TS",
             "qualifier": "EMBD",
             "base": null,
@@ -116,48 +19,114 @@
             "geom": "AREA",
             "coords": [
                 {
-                    "lat": 3.533,
-                    "lon": 127.2
+                    "lat": -17.633,
+                    "lon": 46.817
                 },
                 {
-                    "lat": 2.883,
-                    "lon": 127.75
+                    "lat": -18.4,
+                    "lon": 46.233
                 },
                 {
-                    "lat": 2.167,
-                    "lon": 126.35
+                    "lat": -18.267,
+                    "lon": 45.25
                 },
                 {
-                    "lat": 2.333,
-                    "lon": 123.467
-                },
-                {
-                    "lat": 2.933,
-                    "lon": 120.833
-                },
-                {
-                    "lat": 3.35,
-                    "lon": 120.833
-                },
-                {
-                    "lat": 3.533,
-                    "lon": 127
+                    "lat": -16.867,
+                    "lon": 44.433
                 }
             ],
             "dir": null,
             "spd": null,
             "chng": null,
-            "rawSigmet": "WSID21 WAAA 230525\nWAAF SIGMET 14 VALID 230525/230925 WAAA-\nWAAF UJUNG PANDANG FIR EMBD TS OBS WI N0332 E12712 - N0253 E12745 - N\n0210 E12621 - N0220 E12328 - N0256 E12050 - N0321 E12050 - N0332 E127\n12 TOP FL530 MOV W 15KT NC="
+            "rawSigmet": "WSMG31 FMMI 231417\nFMMM SIGMET A1 VALID 231418/231818 FMMI-\nFMMM ANTANANARIVO FIR/UIR EMBD TS OBS WI\nS1738 E04649 - S1824 E04614 - S1816 E04515 - S1652 E04426 - S1545 E04\n507 TOP ABV FL480 STNR INTSF="
         },
         {
-            "isigmetId": 989300,
+            "isigmetId": 989596,
+            "icaoId": "FMMI",
+            "firId": "FMMM",
+            "firName": "FMMM ANTANANARIVO",
+            "receiptTime": "2025-04-23 14:19:38",
+            "validTimeFrom": 1745418000,
+            "validTimeTo": 1745432400,
+            "seriesId": "B1",
+            "hazard": "TS",
+            "qualifier": "EMBD",
+            "base": null,
+            "top": null,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": -25.683,
+                    "lon": 51.483
+                },
+                {
+                    "lat": -26.483,
+                    "lon": 51
+                },
+                {
+                    "lat": -25.45,
+                    "lon": 48.667
+                },
+                {
+                    "lat": -24.467,
+                    "lon": 49.833
+                }
+            ],
+            "dir": null,
+            "spd": null,
+            "chng": null,
+            "rawSigmet": "WSMG31 FMMI 231419\nFMMM SIGMET B1 VALID 231420/231820 FMMI-\nFMMM ANTANANARIVO FIR/UIR EMBD TS OBS WI\nS2541 E05129 - S2629 E05100 - S2527 E04840 - S2428 E04950 TOP ABV FL4\n80 STNR INTSF="
+        },
+        {
+            "isigmetId": 989541,
+            "icaoId": "SEQU",
+            "firId": "SEFG",
+            "firName": "SEFG GUAYAQUIL",
+            "receiptTime": "2025-04-23 12:27:30",
+            "validTimeFrom": 1745411040,
+            "validTimeTo": 1745432640,
+            "seriesId": "3",
+            "hazard": "VA",
+            "qualifier": "REVENTADOR",
+            "base": 0,
+            "top": 15000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": 0.1,
+                    "lon": -77.717
+                },
+                {
+                    "lat": 0.1,
+                    "lon": -77.617
+                },
+                {
+                    "lat": -0.067,
+                    "lon": -77.65
+                },
+                {
+                    "lat": -0.067,
+                    "lon": -77.667
+                },
+                {
+                    "lat": 0.1,
+                    "lon": -77.717
+                }
+            ],
+            "dir": "N",
+            "spd": 5,
+            "chng": null,
+            "rawSigmet": "WVEQ31 SEQU 231224\nSEFG SIGMET 3 VALID 231224/231824 SEGU-\nSEFG GUAYAQUIL FIR VA ERUPTION MT REVENTADOR PSN S0004 W07739\nVA CLD OBS AT 1140Z WI N0006 W07743 - N0006 W07737 - S0004 W07739 -\nS0004 W07740 - N0006 W07743 SFC/FL150 MOV N 5KT\nFCST AT 1730Z WI N0017 W07737 - N0013 W07728 - S0005 W07739 - S0002\nW07741 - N0017 W07737="
+        },
+        {
+            "isigmetId": 989600,
             "icaoId": "BGSF",
             "firId": "BGGL",
             "firName": "BGGL NUUK",
-            "receiptTime": "2025-04-23 05:11:00",
-            "validTimeFrom": 1745386200,
-            "validTimeTo": 1745400600,
-            "seriesId": "U02",
+            "receiptTime": "2025-04-23 14:24:29",
+            "validTimeFrom": 1745418300,
+            "validTimeTo": 1745432700,
+            "seriesId": "U04",
             "hazard": "TURB",
             "qualifier": "SEV",
             "base": 0,
@@ -165,163 +134,40 @@
             "geom": "AREA",
             "coords": [
                 {
-                    "lat": 59.583,
+                    "lat": 59.667,
                     "lon": -43.033
                 },
                 {
-                    "lat": 60,
-                    "lon": -45.1
+                    "lat": 60.1,
+                    "lon": -45.167
                 },
                 {
-                    "lat": 61.383,
-                    "lon": -44.933
+                    "lat": 61.217,
+                    "lon": -45.167
                 },
                 {
-                    "lat": 60.983,
-                    "lon": -42.283
+                    "lat": 61.517,
+                    "lon": -42.15
                 },
                 {
-                    "lat": 59.583,
+                    "lat": 59.667,
                     "lon": -43.033
-                }
-            ],
-            "dir": null,
-            "spd": null,
-            "chng": "NC",
-            "rawSigmet": "WSGL31 BGSF 230510\nBGGL SIGMET U02 VALID 230530/230930 BGSF-\nBGGL NUUK FIR SEV TURB FCST AT 0530Z WI N5935 W04302 - N6000 W04506 -\n N6123 W04456 - N6059 W04217 - N5935 W04302 SFC/FL110 NC FCST AT \n0930Z WI N6202 W04147 - N5936 W04314 - N5951 W04451 - N6131 W04522 - \nN6102 W04352 - N6202 W04255 - N6202 W04147="
-        },
-        {
-            "isigmetId": 989305,
-            "icaoId": "WAAA",
-            "firId": "WAAF",
-            "firName": "WAAF UJUNG PANDANG",
-            "receiptTime": "2025-04-23 05:32:19",
-            "validTimeFrom": 1745386200,
-            "validTimeTo": 1745400600,
-            "seriesId": "17",
-            "hazard": "TS",
-            "qualifier": "EMBD",
-            "base": null,
-            "top": 51000,
-            "geom": "AREA",
-            "coords": [
-                {
-                    "lat": 1.05,
-                    "lon": 120.85
-                },
-                {
-                    "lat": -4.067,
-                    "lon": 116.9
-                },
-                {
-                    "lat": -0.783,
-                    "lon": 116.167
-                },
-                {
-                    "lat": 1.05,
-                    "lon": 120.85
-                }
-            ],
-            "dir": "W",
-            "spd": 10,
-            "chng": "INTSF",
-            "rawSigmet": "WSID21 WAAA 230530\nWAAF SIGMET 17 VALID 230530/230930 WAAA-\nWAAF UJUNG PANDANG FIR EMBD TS OBS WI N0103 E12051 - S0404 E11654 - S\n0047 E11610 - N0103 E12051 TOP FL510 MOV W 10KT INTSF="
-        },
-        {
-            "isigmetId": 989309,
-            "icaoId": "VCBI",
-            "firId": "VCCF",
-            "firName": "VCCF COLOMBO",
-            "receiptTime": "2025-04-23 05:46:00",
-            "validTimeFrom": 1745386800,
-            "validTimeTo": 1745401200,
-            "seriesId": "B01",
-            "hazard": "TS",
-            "qualifier": "EMBD",
-            "base": null,
-            "top": 48000,
-            "geom": "AREA",
-            "coords": [
-                {
-                    "lat": 7.167,
-                    "lon": 78.583
-                },
-                {
-                    "lat": 8.633,
-                    "lon": 79.317
-                },
-                {
-                    "lat": 8.35,
-                    "lon": 80.517
-                },
-                {
-                    "lat": 6.667,
-                    "lon": 79.883
-                },
-                {
-                    "lat": 7.167,
-                    "lon": 78.583
                 }
             ],
             "dir": "-",
             "spd": 0,
             "chng": "NC",
-            "rawSigmet": "WSSB31 VCBI 230540\nVCCF SIGMET B01 VALID 230540/230940 VCBI-\nVCCF COLOMBO FIR EMBD TS OBS WI\nN0710 E07835 - N0838 E07919 -\nN0821 E08031 - N0640 E07953 -\nN0710 E07835 TOP FL480 STNR NC="
+            "rawSigmet": "WSGL31 BGSF 231423\nBGGL SIGMET U04 VALID 231425/231825 BGSF-\nBGGL NUUK FIR SEV TURB FCST AT 1425Z WI N5940 W04302 - N6006 W04510 -\n N6113 W04510 - N6131 W04209 - N5940 W04302 SFC/FL110 STNR NC="
         },
         {
-            "isigmetId": 989327,
-            "icaoId": "WAAA",
-            "firId": "WAAF",
-            "firName": "WAAF UJUNG PANDANG",
-            "receiptTime": "2025-04-23 06:06:21",
-            "validTimeFrom": 1745387700,
-            "validTimeTo": 1745402100,
-            "seriesId": "19",
-            "hazard": "TS",
-            "qualifier": "EMBD",
-            "base": null,
-            "top": 52000,
-            "geom": "AREA",
-            "coords": [
-                {
-                    "lat": -4.633,
-                    "lon": 125.917
-                },
-                {
-                    "lat": -4.8,
-                    "lon": 128.767
-                },
-                {
-                    "lat": -5.8,
-                    "lon": 129.617
-                },
-                {
-                    "lat": -6.383,
-                    "lon": 127.533
-                },
-                {
-                    "lat": -4.917,
-                    "lon": 125.483
-                },
-                {
-                    "lat": -4.633,
-                    "lon": 125.917
-                }
-            ],
-            "dir": null,
-            "spd": null,
-            "chng": null,
-            "rawSigmet": "WSID21 WAAA 230555\nWAAF SIGMET 19 VALID 230555/230955 WAAA-\nWAAF UJUNG PANDANG FIR EMBD TS OBS WI S0438 E12555 - S0448 E12846 - S\n0548 E12937 - S0623 E12732 - S0455 E12529 - S0438 E12555 TOP FL520 MO\nV W 10KT NC="
-        },
-        {
-            "isigmetId": 989329,
-            "icaoId": "WAAA",
-            "firId": "WAAF",
-            "firName": "WAAF UJUNG PANDANG",
-            "receiptTime": "2025-04-23 06:06:33",
-            "validTimeFrom": 1745387700,
-            "validTimeTo": 1745402100,
-            "seriesId": "20",
+            "isigmetId": 989603,
+            "icaoId": "NZKL",
+            "firId": "NZZO",
+            "firName": "NZZO AUCKLAND OCEANIC",
+            "receiptTime": "2025-04-23 14:27:34",
+            "validTimeFrom": 1745418420,
+            "validTimeTo": 1745432820,
+            "seriesId": "13",
             "hazard": "TS",
             "qualifier": "EMBD",
             "base": null,
@@ -329,289 +175,727 @@
             "geom": "AREA",
             "coords": [
                 {
-                    "lat": -6.017,
-                    "lon": 136.467
+                    "lat": -14.333,
+                    "lon": -160.833
                 },
                 {
-                    "lat": -7.083,
-                    "lon": 134.733
+                    "lat": -13.5,
+                    "lon": -159.833
                 },
                 {
-                    "lat": -7.783,
-                    "lon": 132.25
+                    "lat": -15.167,
+                    "lon": -157.5
                 },
                 {
-                    "lat": -5.633,
-                    "lon": 132.367
+                    "lat": -17.167,
+                    "lon": -157.333
                 },
                 {
-                    "lat": -5,
-                    "lon": 135.017
+                    "lat": -16.167,
+                    "lon": -160.167
                 },
                 {
-                    "lat": -6.017,
-                    "lon": 136.467
+                    "lat": -14.333,
+                    "lon": -160.833
                 }
             ],
-            "dir": null,
-            "spd": null,
-            "chng": null,
-            "rawSigmet": "WSID21 WAAA 230555\nWAAF SIGMET 20 VALID 230555/230955 WAAA-\nWAAF UJUNG PANDANG FIR EMBD TS OBS WI S0601 E13628 - S0705 E13444 - S\n0747 E13215 - S0538 E13222 - S0500 E13501 - S0601 E13628 TOP FL500 MO\nV WNW 10KT NC="
+            "dir": "-",
+            "spd": 0,
+            "chng": "NC",
+            "rawSigmet": "WSPS21 NZKL 231422\nNZZO SIGMET 13 VALID 231427/231827 NZKL-\nNZZO AUCKLAND OCEANIC FIR EMBD TS OBS WI S1420 W16050 - S1330 W15950\n- S1510 W15730 - S1710 W15720 - S1610 W16010 - S1420 W16050 TOP\nFL500 STNR NC="
         },
         {
-            "isigmetId": 989284,
-            "icaoId": "RUNW",
-            "firId": "UNNT",
-            "firName": "UNNT NOVOSIBIRSK",
-            "receiptTime": "2025-04-23 04:31:51",
-            "validTimeFrom": 1745388000,
-            "validTimeTo": 1745402400,
-            "seriesId": "1",
+            "isigmetId": 989617,
+            "icaoId": "LTFM",
+            "firId": "LTBB",
+            "firName": "LTBB ISTANBUL",
+            "receiptTime": "2025-04-23 14:56:51",
+            "validTimeFrom": 1745420400,
+            "validTimeTo": 1745433000,
+            "seriesId": "3",
             "hazard": "TS",
             "qualifier": "EMBD",
             "base": null,
-            "top": 36000,
+            "top": 30000,
             "geom": "AREA",
             "coords": [
                 {
-                    "lat": 60.668,
-                    "lon": 80.35
+                    "lat": 37.893,
+                    "lon": 26.883
                 },
                 {
-                    "lat": 60.661,
-                    "lon": 80.284
+                    "lat": 37.811,
+                    "lon": 27.085
                 },
                 {
-                    "lat": 58.2,
-                    "lon": 72.85
+                    "lat": 37.653,
+                    "lon": 26.961
                 },
                 {
-                    "lat": 54.103,
-                    "lon": 72.85
+                    "lat": 37.233,
+                    "lon": 27.205
                 },
                 {
-                    "lat": 54.099,
-                    "lon": 73.045
+                    "lat": 37.047,
+                    "lon": 27.14
                 },
                 {
-                    "lat": 53.916,
-                    "lon": 73.561
+                    "lat": 36.87,
+                    "lon": 27.38
                 },
                 {
-                    "lat": 53.588,
-                    "lon": 73.225
+                    "lat": 36.679,
+                    "lon": 27.273
                 },
                 {
-                    "lat": 53.425,
-                    "lon": 73.496
+                    "lat": 36.548,
+                    "lon": 27.523
                 },
                 {
-                    "lat": 53.651,
-                    "lon": 73.898
+                    "lat": 36.679,
+                    "lon": 27.853
                 },
                 {
-                    "lat": 53.484,
-                    "lon": 74.405
+                    "lat": 36.469,
+                    "lon": 28.123
                 },
                 {
-                    "lat": 54.226,
-                    "lon": 75.911
+                    "lat": 36.534,
+                    "lon": 28.342
                 },
                 {
-                    "lat": 54.416,
-                    "lon": 76.869
+                    "lat": 36.216,
+                    "lon": 29.211
                 },
                 {
-                    "lat": 54.062,
-                    "lon": 76.499
+                    "lat": 36.073,
+                    "lon": 30.008
                 },
                 {
-                    "lat": 53.298,
-                    "lon": 77.874
+                    "lat": 38.993,
+                    "lon": 30
                 },
                 {
-                    "lat": 51.9,
-                    "lon": 79.212
+                    "lat": 39.445,
+                    "lon": 30.967
                 },
                 {
-                    "lat": 50.763,
-                    "lon": 80.056
+                    "lat": 40.583,
+                    "lon": 30.967
                 },
                 {
-                    "lat": 50.87,
-                    "lon": 80.35
+                    "lat": 39.117,
+                    "lon": 26.883
                 },
                 {
-                    "lat": 60.668,
-                    "lon": 80.35
+                    "lat": 37.893,
+                    "lon": 26.883
+                }
+            ],
+            "dir": "NE",
+            "spd": 15,
+            "chng": "NC",
+            "rawSigmet": "WSTU31 LTFM 231500\nLTBB SIGMET 3 VALID 231500/231830 LTFM-\nLTBB ISTANBUL FIR EMBD TS FCST S OF LINE N4035 E03058 - N3907 E02653\nTOP FL300 MOV NE 15KT NC="
+        },
+        {
+            "isigmetId": 989666,
+            "icaoId": "LROM",
+            "firId": "LRBB",
+            "firName": "LRBB BUCURESTI",
+            "receiptTime": "2025-04-23 16:12:58",
+            "validTimeFrom": 1745425800,
+            "validTimeTo": 1745433000,
+            "seriesId": "T03",
+            "hazard": "TS",
+            "qualifier": "FRQ",
+            "base": null,
+            "top": 40000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": 45.333,
+                    "lon": 21
+                },
+                {
+                    "lat": 46.083,
+                    "lon": 20.667
+                },
+                {
+                    "lat": 46.583,
+                    "lon": 21.667
+                },
+                {
+                    "lat": 45.25,
+                    "lon": 21.833
+                },
+                {
+                    "lat": 45.333,
+                    "lon": 21
+                }
+            ],
+            "dir": "-",
+            "spd": 0,
+            "chng": "NC",
+            "rawSigmet": "WSRO31 LROM 231612\nLRBB SIGMET T03 VALID 231630/231830 LROM-\nLRBB BUCURESTI FIR\nFRQ TS OBS WI N4520 E02100 - N4605 E02040 - N4635 E02140 - N4515\nE02150 - N4520 E02100 TOP FL400 STNR NC="
+        },
+        {
+            "isigmetId": 989694,
+            "icaoId": "OIII",
+            "firId": "OIIX",
+            "firName": "OIIX TEHRAN",
+            "receiptTime": "2025-04-23 16:49:02",
+            "validTimeFrom": 1745424900,
+            "validTimeTo": 1745433000,
+            "seriesId": "08",
+            "hazard": "TS",
+            "qualifier": "EMBD",
+            "base": null,
+            "top": 32000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": 39.699,
+                    "lon": 44.791
+                },
+                {
+                    "lat": 39.738,
+                    "lon": 44.626
+                },
+                {
+                    "lat": 39.686,
+                    "lon": 44.458
+                },
+                {
+                    "lat": 39.426,
+                    "lon": 44.408
+                },
+                {
+                    "lat": 39.405,
+                    "lon": 44.045
+                },
+                {
+                    "lat": 38.821,
+                    "lon": 44.28
+                },
+                {
+                    "lat": 38.413,
+                    "lon": 44.312
+                },
+                {
+                    "lat": 38.326,
+                    "lon": 44.506
+                },
+                {
+                    "lat": 37.921,
+                    "lon": 44.239
+                },
+                {
+                    "lat": 37.764,
+                    "lon": 44.569
+                },
+                {
+                    "lat": 37.486,
+                    "lon": 44.603
+                },
+                {
+                    "lat": 37.276,
+                    "lon": 44.799
+                },
+                {
+                    "lat": 37.147,
+                    "lon": 44.759
+                },
+                {
+                    "lat": 36.989,
+                    "lon": 44.927
+                },
+                {
+                    "lat": 36.812,
+                    "lon": 44.856
+                },
+                {
+                    "lat": 36.703,
+                    "lon": 45.058
+                },
+                {
+                    "lat": 36.491,
+                    "lon": 45.025
+                },
+                {
+                    "lat": 36.411,
+                    "lon": 45.253
+                },
+                {
+                    "lat": 36.007,
+                    "lon": 45.364
+                },
+                {
+                    "lat": 35.985,
+                    "lon": 45.562
+                },
+                {
+                    "lat": 35.828,
+                    "lon": 45.765
+                },
+                {
+                    "lat": 35.8,
+                    "lon": 46.326
+                },
+                {
+                    "lat": 35.622,
+                    "lon": 45.994
+                },
+                {
+                    "lat": 35.151,
+                    "lon": 46.179
+                },
+                {
+                    "lat": 35.054,
+                    "lon": 45.924
+                },
+                {
+                    "lat": 34.78,
+                    "lon": 45.691
+                },
+                {
+                    "lat": 34.583,
+                    "lon": 45.752
+                },
+                {
+                    "lat": 34.575,
+                    "lon": 45.526
+                },
+                {
+                    "lat": 34.17,
+                    "lon": 45.56
+                },
+                {
+                    "lat": 33.957,
+                    "lon": 45.426
+                },
+                {
+                    "lat": 33.206,
+                    "lon": 46.191
+                },
+                {
+                    "lat": 33.028,
+                    "lon": 46.088
+                },
+                {
+                    "lat": 32.926,
+                    "lon": 46.453
+                },
+                {
+                    "lat": 32.465,
+                    "lon": 47.162
+                },
+                {
+                    "lat": 32.475,
+                    "lon": 47.395
+                },
+                {
+                    "lat": 31.804,
+                    "lon": 47.845
+                },
+                {
+                    "lat": 31.387,
+                    "lon": 47.669
+                },
+                {
+                    "lat": 31.033,
+                    "lon": 47.688
+                },
+                {
+                    "lat": 30.967,
+                    "lon": 48.019
+                },
+                {
+                    "lat": 30.542,
+                    "lon": 48.003
+                },
+                {
+                    "lat": 29.99,
+                    "lon": 48.455
+                },
+                {
+                    "lat": 29.868,
+                    "lon": 48.722
+                },
+                {
+                    "lat": 29.225,
+                    "lon": 49.699
+                },
+                {
+                    "lat": 28.985,
+                    "lon": 49.463
+                },
+                {
+                    "lat": 28.729,
+                    "lon": 49.637
+                },
+                {
+                    "lat": 26.926,
+                    "lon": 51.053
+                },
+                {
+                    "lat": 26.727,
+                    "lon": 51.734
+                },
+                {
+                    "lat": 26.076,
+                    "lon": 53.953
+                },
+                {
+                    "lat": 25.655,
+                    "lon": 55.315
+                },
+                {
+                    "lat": 26.341,
+                    "lon": 56.093
+                },
+                {
+                    "lat": 26.684,
+                    "lon": 56.435
+                },
+                {
+                    "lat": 26.157,
+                    "lon": 56.751
+                },
+                {
+                    "lat": 25.579,
+                    "lon": 56.722
+                },
+                {
+                    "lat": 24.994,
+                    "lon": 57.515
+                },
+                {
+                    "lat": 24.851,
+                    "lon": 59.528
+                },
+                {
+                    "lat": 24.707,
+                    "lon": 61.326
+                },
+                {
+                    "lat": 25.138,
+                    "lon": 61.35
+                },
+                {
+                    "lat": 25.2,
+                    "lon": 61.597
+                },
+                {
+                    "lat": 26.233,
+                    "lon": 61.831
+                },
+                {
+                    "lat": 26.651,
+                    "lon": 62.787
+                },
+                {
+                    "lat": 26.629,
+                    "lon": 63.179
+                },
+                {
+                    "lat": 27.217,
+                    "lon": 63.241
+                },
+                {
+                    "lat": 27.275,
+                    "lon": 62.84
+                },
+                {
+                    "lat": 28.229,
+                    "lon": 62.756
+                },
+                {
+                    "lat": 28.557,
+                    "lon": 61.899
+                },
+                {
+                    "lat": 29.864,
+                    "lon": 60.883
+                },
+                {
+                    "lat": 30.862,
+                    "lon": 61.856
+                },
+                {
+                    "lat": 31.381,
+                    "lon": 61.78
+                },
+                {
+                    "lat": 31.523,
+                    "lon": 60.856
+                },
+                {
+                    "lat": 32.241,
+                    "lon": 60.821
+                },
+                {
+                    "lat": 33.205,
+                    "lon": 60.573
+                },
+                {
+                    "lat": 33.523,
+                    "lon": 60.872
+                },
+                {
+                    "lat": 33.635,
+                    "lon": 60.532
+                },
+                {
+                    "lat": 34.13,
+                    "lon": 60.499
+                },
+                {
+                    "lat": 34.304,
+                    "lon": 60.673
+                },
+                {
+                    "lat": 34.324,
+                    "lon": 60.86
+                },
+                {
+                    "lat": 34.501,
+                    "lon": 60.758
+                },
+                {
+                    "lat": 34.829,
+                    "lon": 61.066
+                },
+                {
+                    "lat": 35.612,
+                    "lon": 61.258
+                },
+                {
+                    "lat": 36.637,
+                    "lon": 61.15
+                },
+                {
+                    "lat": 36.628,
+                    "lon": 60.36
+                },
+                {
+                    "lat": 37.065,
+                    "lon": 60.025
+                },
+                {
+                    "lat": 37.237,
+                    "lon": 59.462
+                },
+                {
+                    "lat": 37.528,
+                    "lon": 59.376
+                },
+                {
+                    "lat": 37.705,
+                    "lon": 58.837
+                },
+                {
+                    "lat": 37.63,
+                    "lon": 58.386
+                },
+                {
+                    "lat": 37.881,
+                    "lon": 57.984
+                },
+                {
+                    "lat": 37.964,
+                    "lon": 57.448
+                },
+                {
+                    "lat": 38.259,
+                    "lon": 57.247
+                },
+                {
+                    "lat": 38.274,
+                    "lon": 56.506
+                },
+                {
+                    "lat": 38.112,
+                    "lon": 56.36
+                },
+                {
+                    "lat": 38.159,
+                    "lon": 55.619
+                },
+                {
+                    "lat": 37.759,
+                    "lon": 54.896
+                },
+                {
+                    "lat": 37.419,
+                    "lon": 54.76
+                },
+                {
+                    "lat": 37.319,
+                    "lon": 54.13
+                },
+                {
+                    "lat": 37.873,
+                    "lon": 51.477
+                },
+                {
+                    "lat": 38.461,
+                    "lon": 48.843
+                },
+                {
+                    "lat": 38.396,
+                    "lon": 48.667
+                },
+                {
+                    "lat": 38.864,
+                    "lon": 47.961
+                },
+                {
+                    "lat": 39.044,
+                    "lon": 48.339
+                },
+                {
+                    "lat": 39.277,
+                    "lon": 48.138
+                },
+                {
+                    "lat": 39.378,
+                    "lon": 48.367
+                },
+                {
+                    "lat": 39.748,
+                    "lon": 47.972
+                },
+                {
+                    "lat": 38.879,
+                    "lon": 46.524
+                },
+                {
+                    "lat": 38.913,
+                    "lon": 46.36
+                },
+                {
+                    "lat": 38.847,
+                    "lon": 46.143
+                },
+                {
+                    "lat": 38.983,
+                    "lon": 45.481
+                },
+                {
+                    "lat": 39.699,
+                    "lon": 44.791
                 }
             ],
             "dir": "E",
-            "spd": 27,
+            "spd": 0,
             "chng": "NC",
-            "rawSigmet": "WSRA31 RUNW 230431\nUNNT SIGMET 1 VALID 230600/231000 UNNT-\nUNNT NOVOSIBIRSK FIR EMBD TSGR FCST S OF LINE N6041 E08021 - N5812\nE07251 TOP FL360 MOV E 50KMH NC="
+            "rawSigmet": "WSIR31 OIII 231647\nOIIX SIGMET 08 VALID 231615/231830 OIII-\nOIIX TEHRAN FIR\nEMBD TS OBS/FCST TOP FL320 MOV E NC="
         },
         {
-            "isigmetId": 989308,
-            "icaoId": "UBBB",
-            "firId": "UBBB",
-            "firName": "UBBA BAKU",
-            "receiptTime": "2025-04-23 05:44:28",
-            "validTimeFrom": 1745388000,
-            "validTimeTo": 1745402400,
-            "seriesId": "2",
+            "isigmetId": 989609,
+            "icaoId": "KKCI",
+            "firId": "KZWY",
+            "firName": "NEW YORK OCEANIC",
+            "receiptTime": "2025-04-23 14:38:27",
+            "validTimeFrom": 1745419200,
+            "validTimeTo": 1745433600,
+            "seriesId": "DELTA 3",
             "hazard": "TS",
-            "qualifier": "EMBD",
+            "qualifier": "FRQ",
             "base": null,
-            "top": 34000,
+            "top": 46000,
             "geom": "AREA",
             "coords": [
                 {
-                    "lat": 41.613,
-                    "lon": 47
+                    "lat": 39,
+                    "lon": -67.5
                 },
                 {
-                    "lat": 41.868,
-                    "lon": 46.756
+                    "lat": 37.25,
+                    "lon": -67
                 },
                 {
-                    "lat": 41.906,
-                    "lon": 46.421
+                    "lat": 34.25,
+                    "lon": -73.75
                 },
                 {
-                    "lat": 41.757,
-                    "lon": 46.188
+                    "lat": 37.25,
+                    "lon": -73.5
                 },
                 {
-                    "lat": 41.549,
-                    "lon": 46.244
-                },
-                {
-                    "lat": 41.3,
-                    "lon": 46.717
-                },
-                {
-                    "lat": 41.079,
-                    "lon": 46.516
-                },
-                {
-                    "lat": 41.171,
-                    "lon": 45.887
-                },
-                {
-                    "lat": 41.463,
-                    "lon": 45.312
-                },
-                {
-                    "lat": 41.266,
-                    "lon": 44.986
-                },
-                {
-                    "lat": 40.862,
-                    "lon": 45.567
-                },
-                {
-                    "lat": 40.685,
-                    "lon": 45.379
-                },
-                {
-                    "lat": 40.474,
-                    "lon": 45.475
-                },
-                {
-                    "lat": 40.256,
-                    "lon": 45.99
-                },
-                {
-                    "lat": 40.029,
-                    "lon": 45.87
-                },
-                {
-                    "lat": 40.01,
-                    "lon": 45.568
-                },
-                {
-                    "lat": 39.602,
-                    "lon": 46.186
-                },
-                {
-                    "lat": 39.545,
-                    "lon": 46.542
-                },
-                {
-                    "lat": 39.412,
-                    "lon": 46.396
-                },
-                {
-                    "lat": 39.214,
-                    "lon": 46.591
-                },
-                {
-                    "lat": 39.176,
-                    "lon": 46.46
-                },
-                {
-                    "lat": 38.869,
-                    "lon": 46.538
-                },
-                {
-                    "lat": 39.153,
-                    "lon": 47
-                },
-                {
-                    "lat": 41.613,
-                    "lon": 47
+                    "lat": 39,
+                    "lon": -67.5
                 }
             ],
             "dir": "E",
-            "spd": 20,
+            "spd": 25,
             "chng": "NC",
-            "rawSigmet": "WSAJ31 UBBB 230543\nUBBB SIGMET 2 VALID 230600/231000 UBBB-\nUBBA BAKU FIR EMBD TS FCST W OF E047 TOP FL340 MOV E 20KT NC="
+            "rawSigmet": "WSNT04 KKCI 231440\nSIGA0D\nKZWY SIGMET DELTA 3 VALID 231440/231840 KKCI-\nNEW YORK OCEANIC FIR FRQ TS OBS AT 1435Z WI N3900 W06730 - N3715\nW06700 - N3415 W07345 - N3715 W07330 - N3900 W06730. TOP FL460.\nMOV E 25KT. NC."
         },
         {
-            "isigmetId": 989310,
-            "icaoId": "FAOR",
-            "firId": "FAJO",
-            "firName": "FAJO JOHANNESBURG OCEANIC",
-            "receiptTime": "2025-04-23 05:51:33",
-            "validTimeFrom": 1745388000,
-            "validTimeTo": 1745402400,
-            "seriesId": "K02",
+            "isigmetId": 989611,
+            "icaoId": "FIMP",
+            "firId": "FIMM",
+            "firName": "FIMM MAURITIUS",
+            "receiptTime": "2025-04-23 14:43:38",
+            "validTimeFrom": 1745419500,
+            "validTimeTo": 1745433900,
+            "seriesId": "C03",
             "hazard": "TS",
             "qualifier": "EMBD",
             "base": null,
-            "top": 34000,
+            "top": 39000,
             "geom": "AREA",
             "coords": [
                 {
-                    "lat": -42.3,
-                    "lon": 17.117
+                    "lat": -34.475,
+                    "lon": 57
                 },
                 {
-                    "lat": -44.533,
-                    "lon": 31.667
+                    "lat": -38.449,
+                    "lon": 57.03
                 },
                 {
-                    "lat": -54.367,
-                    "lon": 44.05
+                    "lat": -39.53,
+                    "lon": 57.032
                 },
                 {
-                    "lat": -57.317,
-                    "lon": 37.2
+                    "lat": -44.975,
+                    "lon": 62.723
                 },
                 {
-                    "lat": -47.55,
-                    "lon": 23.767
+                    "lat": -44.975,
+                    "lon": 62.908
                 },
                 {
-                    "lat": -46.983,
-                    "lon": 12.983
+                    "lat": -44.992,
+                    "lon": 69.1
+                },
+                {
+                    "lat": -44.991,
+                    "lon": 70.997
+                },
+                {
+                    "lat": -40,
+                    "lon": 69.5
+                },
+                {
+                    "lat": -32,
+                    "lon": 63.5
+                },
+                {
+                    "lat": -33.5,
+                    "lon": 57
+                },
+                {
+                    "lat": -34.475,
+                    "lon": 57
                 }
             ],
-            "dir": null,
-            "spd": null,
-            "chng": null,
-            "rawSigmet": "WSZA21 FAOR 230549\nFAJO SIGMET K02 VALID 230600/231000 FAOR-\nFAJO JOHANNESBURG OCEANIC FIR EMBD TS FCST WI\nS4218 E01707 - S4432 E03140 - S5422 E04403 - S5719 E03712 -\nS4733 E02346 - S4659 E01259 TOP FL340="
+            "dir": "E",
+            "spd": 30,
+            "chng": "NC",
+            "rawSigmet": "WSMA31 FIMP 231438\nFIMM SIGMET C03 VALID 231445/231845 FIMP-\nFIMM MAURITIUS FIR EMBD TS OBS AT 1415Z SE OF LINE S4500 E06245 -\nS3930 E05700 - S3330 E05700 - S3200 E06330 - S4000 E06930 - S4500\nE07100 TOP FL390 MOV E 30 KT NC="
         }
     ]
 }

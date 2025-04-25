@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Flight Briefing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/flight_plan.css">
+    <style>
+        .flight-briefing {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .route-banner {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .weather-component {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            padding: 20px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dark-mode .weather-component {
+            background: #34495e;
+            color: #ecf0f1;
+        }
+        
+        .component-header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .dark-mode .component-header {
+            border-bottom-color: #4a6278;
+        }
+        
+        .component-header i {
+            font-size: 24px;
+            margin-right: 10px;
+            color: #3498db;
+        }
+        
+        .tab-container {
+            margin-top: 30px;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            scrollbar-width: thin;
+        }
+        
+        .dark-mode .tabs {
+            border-bottom-color: #4a6278;
+        }
+        
+        .tab {
+            padding: 12px 24px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tab:hover {
+            color: #3498db;
+        }
+        
+        .tab.active {
+            border-bottom-color: #3498db;
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .dark-mode .tab.active {
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        [data-severity="high"] {
+            color: #e74c3c;
+            font-weight: bold;
+            position: relative;
+            padding-left: 5px;
+        }
+        
+        [data-severity="high"]::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: #e74c3c;
+            border-radius: 3px;
+        }
+        
+        [data-severity="medium"] {
+            color: #f39c12;
+            position: relative;
+            padding-left: 5px;
+        }
+        
+        [data-severity="medium"]::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: #f39c12;
+            border-radius: 3px;
+        }
+        
+        [data-severity="low"] {
+            color: #3498db;
+            position: relative;
+            padding-left: 5px;
+        }
+        
+        [data-severity="low"]::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: #3498db;
+            border-radius: 3px;
+        }
+        
+        .dark-mode [data-severity="high"] {
+            color: #ff6b6b;
+        }
+        
+        .dark-mode [data-severity="medium"] {
+            color: #feca57;
+        }
+        
+        .dark-mode [data-severity="low"] {
+            color: #48dbfb;
+        }
+        
+        .print-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .print-btn, .back-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .print-btn {
+            background: #3498db;
+            color: white;
+        }
+        
+        .back-btn {
+            background: #95a5a6;
+            color: white;
+        }
+        
+        .print-btn:hover, .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        
+        .route-timestamp {
+            display: flex;
+            gap: 20px;
+            margin-top: 5px;
+            opacity: 0.9;
+            font-size: 14px;
+        }
+        
+        .route-info {
+            font-size: 18px;
+            font-weight: 500;
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .route-waypoint {
+            background-color: rgba(255,255,255,0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 80px;
+        }
+        
+        .waypoint-alt {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        .route-arrow {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .theme-toggle-briefing {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        @media print {
+            .print-actions, .tabs, .theme-toggle-briefing {
+                display: none !important;
+            }
+            
+            .tab-content {
+                display: block !important;
+                page-break-inside: avoid;
+                margin-bottom: 20px;
+            }
+            
+            .weather-component {
+                break-inside: avoid;
+                margin-bottom: 20px;
+            }
+        }
+        
+        /* Additional styles for enhanced tab content */
+        ul {
+            padding-left: 20px;
+        }
+        
+        h3, h4 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .dark-mode h3, .dark-mode h4 {
+            color: #ecf0f1;
+        }
+        
+        p {
+            margin-bottom: 10px;
+        }
+        
+        /* Weather animation in briefing */
+        .weather-scene-mini {
+            width: 100px;
+            height: 60px;
+            position: relative;
+            margin: 0 auto 20px;
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <div class="theme-toggle-briefing">
+        <input type="checkbox" id="theme-switch">
+        <label for="theme-switch" class="toggle-label">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+            <span class="toggle-ball"></span>
+        </label>
+    </div>
+
+    <header>
+        <div class="logo">
+            <i class="fas fa-plane"></i>
+            <h1>AviWeather</h1>
+        </div>
+        <nav>
+            <a href="/" class="nav-link">Home</a>
+            <a href="/flight-plan" class="nav-link">Flight Planner</a>
+        </nav>
+    </header>
+
+    <main class="flight-briefing">
+        <div class="route-banner">
+            <div>
+                <h2>Comprehensive Flight Briefing</h2>
+                <div class="route-info">
+                    {% for waypoint in briefing.route_info %}
+                        {% if not loop.first %}
+                            <span class="route-arrow"><i class="fas fa-long-arrow-alt-right"></i></span>
+                        {% endif %}
+                        <div class="route-waypoint">
+                            {% set parts = waypoint.split(' at ') %}
+                            <span class="waypoint-code">{{ parts[0] }}</span>
+                            {% if parts|length > 1 %}
+                                <span class="waypoint-alt">{{ parts[1] }}</span>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="route-timestamp">
+                    <span><i class="far fa-calendar-alt"></i> {{ briefing.raw_data.sigmet.timestamp[:10] }}</span>
+                    <span><i class="far fa-clock"></i> {{ briefing.raw_data.sigmet.timestamp[11:16] }}</span>
+                </div>
+            </div>
+            <div class="print-actions">
+                <button class="back-btn" onclick="window.location.href='/flight-plan'">
+                    <i class="fas fa-arrow-left"></i> Back to Planner
+                </button>
+                <button class="print-btn" onclick="window.print()">
+                    <i class="fas fa-print"></i> Print Briefing
+                </button>
+            </div>
+        </div>
+
+        <div class="weather-component">
+            <div class="component-header">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h2>Executive Summary</h2>
+            </div>
+            <div id="summary-content">
+                {{ briefing.final_report|safe }}
+            </div>
+        </div>
+
+        <div class="tab-container">
+            <div class="tabs">
+                <div class="tab active" onclick="openTab(event, 'pirep-tab')"><i class="fas fa-headset"></i> Pilot Reports</div>
+                <div class="tab" onclick="openTab(event, 'sigmet-tab')"><i class="fas fa-cloud-bolt"></i> SIGMETs</div>
+                <div class="tab" onclick="openTab(event, 'metar-tab')"><i class="fas fa-cloud-sun"></i> METAR Analysis</div>
+                <div class="tab" onclick="openTab(event, 'taf-tab')"><i class="fas fa-clock"></i> TAF Forecast</div>
+                <div class="tab" onclick="openTab(event, 'raw-tab')"><i class="fas fa-code"></i> Raw Data</div>
+            </div>
+            
+            <div id="pirep-tab" class="tab-content active">
+                <div class="weather-component">
+                    <div class="component-header">
+                        <i class="fas fa-headset"></i>
+                        <h2>Pilot Reports (PIREPs)</h2>
+                    </div>
+                    <div id="pirep-analysis">{{ briefing.component_analyses.pirep|safe }}</div>
+                </div>
+            </div>
+            
+            <div id="sigmet-tab" class="tab-content">
+                <div class="weather-component">
+                    <div class="component-header">
+                        <i class="fas fa-cloud-bolt"></i>
+                        <h2>Significant Meteorological Information</h2>
+                    </div>
+                    <div id="sigmet-analysis">{{ briefing.component_analyses.sigmet|safe }}</div>
+                </div>
+            </div>
+            
+            <div id="metar-tab" class="tab-content">
+                <div class="weather-component">
+                    <div class="component-header">
+                        <i class="fas fa-cloud-sun"></i>
+                        <h2>Current Weather (METAR)</h2>
+                    </div>
+                    <div id="metar-analysis">{{ briefing.component_analyses.metar|safe }}</div>
+                </div>
+            </div>
+            
+            <div id="taf-tab" class="tab-content">
+                <div class="weather-component">
+                    <div class="component-header">
+                        <i class="fas fa-clock"></i>
+                        <h2>Weather Forecast (TAF)</h2>
+                    </div>
+                    <div id="taf-analysis">{{ briefing.component_analyses.taf|safe }}</div>
+                </div>
+            </div>
+            
+            <div id="raw-tab" class="tab-content">
+                <div class="weather-component">
+                    <div class="component-header">
+                        <i class="fas fa-code"></i>
+                        <h2>Raw Weather Data</h2>
+                    </div>
+                    <div>
+                        <h3>Raw METAR Data</h3>
+                        <pre style="overflow-x: auto; background: #f5f5f5; padding: 10px; border-radius: 5px;">{{ briefing.raw_data.metar|tojson(indent=2) }}</pre>
+                        
+                        <h3>Raw TAF Data</h3>
+                        <pre style="overflow-x: auto; background: #f5f5f5; padding: 10px; border-radius: 5px;">{{ briefing.raw_data.taf|tojson(indent=2) }}</pre>
+                        
+                        <h3>Raw SIGMET Data</h3>
+                        <pre style="overflow-x: auto; background: #f5f5f5; padding: 10px; border-radius: 5px;">{{ briefing.raw_data.sigmet|tojson(indent=2) }}</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function openTab(evt, tabName) {
+            // Get all tab content and hide them
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            // Get all tabs and remove active class
+            const tabs = document.getElementsByClassName("tab");
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
+            }
+            
+            // Show the selected tab and add active class
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+        
+        // Fix formatting for PIREP, SIGMET, METAR, TAF content
+        document.addEventListener('DOMContentLoaded', function() {
+            // Apply severity styling to list items
+            document.querySelectorAll('[data-severity]').forEach(item => {
+                const severity = item.getAttribute('data-severity');
+                item.classList.add(`severity-${severity}`);
+            });
+            
+            // Format any improperly formatted HTML in the analyses
+            formatAnalysisContent('pirep-analysis');
+            formatAnalysisContent('sigmet-analysis');
+            formatAnalysisContent('metar-analysis');
+            formatAnalysisContent('taf-analysis');
+            
+            // Theme toggle
+            const themeSwitch = document.getElementById('theme-switch');
+            themeSwitch.addEventListener('change', function() {
+                if (this.checked) {
+                    document.body.classList.add('dark-mode');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+            
+            // Apply saved theme
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeSwitch.checked = true;
+            }
+        });
+        
+        function formatAnalysisContent(elementId) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            
+            let content = element.innerHTML;
+            
+            // Check if content has proper HTML formatting
+            if (!content.includes('<ul>') && content.includes('*')) {
+                // Format markdown lists
+                content = content
+                    .replace(/\*\s+(.+?)(?:\n|$)/g, '<li>$1</li>\n')
+                    .replace(/(<li>.*?<\/li>\n)+/gs, '<ul>$&</ul>');
+                
+                // Apply severity indicators
+                content = content
+                    .replace(/(high severity|severity: high|\(high\))/gi, '<span data-severity="high">$1</span>')
+                    .replace(/(medium severity|severity: medium|\(medium\))/gi, '<span data-severity="medium">$1</span>')
+                    .replace(/(low severity|severity: low|\(low\))/gi, '<span data-severity="low">$1</span>');
+                
+                element.innerHTML = content;
+            }
+            
+            // Add proper styling to any existing data-severity items
+            element.querySelectorAll('[data-severity]').forEach(item => {
+                if (!item.className.includes('severity-')) {
+                    const severity = item.getAttribute('data-severity');
+                    item.classList.add(`severity-${severity}`);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

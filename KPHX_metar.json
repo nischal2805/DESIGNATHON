@@ -1,0 +1,44 @@
+[
+    {
+        "metar_id": 742542521,
+        "icaoId": "KPHX",
+        "receiptTime": "2025-04-25 03:03:49",
+        "obsTime": 1745549460,
+        "reportTime": "2025-04-25 03:00:00",
+        "temp": 30,
+        "dewp": 4.4,
+        "wdir": 340,
+        "wspd": 7,
+        "wgst": null,
+        "visib": "10+",
+        "altim": 1007.9,
+        "slp": 1006.1,
+        "qcField": 4,
+        "wxString": null,
+        "presTend": -0.7,
+        "maxT": null,
+        "minT": null,
+        "maxT24": null,
+        "minT24": null,
+        "precip": null,
+        "pcp3hr": null,
+        "pcp6hr": null,
+        "pcp24hr": null,
+        "snow": null,
+        "vertVis": null,
+        "metarType": "METAR",
+        "rawOb": "KPHX 250251Z 34007KT 10SM FEW250 30/04 A2976 RMK AO2 SLP061 T03000044 55007",
+        "mostRecent": 1,
+        "lat": 33.4278,
+        "lon": -112.004,
+        "elev": 338,
+        "prior": 1,
+        "name": "Phoenix/Sky Harbor Intl, AZ, US",
+        "clouds": [
+            {
+                "cover": "FEW",
+                "base": 25000
+            }
+        ]
+    }
+]

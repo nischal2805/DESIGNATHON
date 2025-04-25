@@ -1,0 +1,44 @@
+[
+    {
+        "metar_id": 742545586,
+        "icaoId": "KLVS",
+        "receiptTime": "2025-04-25 03:08:28",
+        "obsTime": 1745549580,
+        "reportTime": "2025-04-25 03:00:00",
+        "temp": 11.7,
+        "dewp": -10.6,
+        "wdir": 210,
+        "wspd": 10,
+        "wgst": null,
+        "visib": "10+",
+        "altim": 1018,
+        "slp": 1009.9,
+        "qcField": 14,
+        "wxString": null,
+        "presTend": 1.3,
+        "maxT": null,
+        "minT": null,
+        "maxT24": null,
+        "minT24": null,
+        "precip": null,
+        "pcp3hr": null,
+        "pcp6hr": null,
+        "pcp24hr": null,
+        "snow": null,
+        "vertVis": null,
+        "metarType": "METAR",
+        "rawOb": "KLVS 250253Z AUTO 21010KT 10SM CLR 12/M11 A3006 RMK AO2 SLP099 T01171106 53013 $",
+        "mostRecent": 1,
+        "lat": 35.6558,
+        "lon": -105.139,
+        "elev": 2095,
+        "prior": 4,
+        "name": "Las Vegas Muni, NM, US",
+        "clouds": [
+            {
+                "cover": "CLR",
+                "base": null
+            }
+        ]
+    }
+]

@@ -1,0 +1,497 @@
+{
+    "region": "all",
+    "hazard": "all",
+    "timestamp": "2025-04-25T09:19:43.321933",
+    "data": [
+        {
+            "isigmetId": 990688,
+            "icaoId": "SEQU",
+            "firId": "SEFG",
+            "firName": "SEFG GUAYAQUIL",
+            "receiptTime": "2025-04-24 21:51:39",
+            "validTimeFrom": 1745531400,
+            "validTimeTo": 1745553000,
+            "seriesId": "A4",
+            "hazard": "VA",
+            "qualifier": "SANGAY",
+            "base": 0,
+            "top": 28000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": -1.667,
+                    "lon": -78.583
+                },
+                {
+                    "lat": -2,
+                    "lon": -78.333
+                },
+                {
+                    "lat": -2.017,
+                    "lon": -78.333
+                },
+                {
+                    "lat": -1.8,
+                    "lon": -78.717
+                },
+                {
+                    "lat": -1.667,
+                    "lon": -78.583
+                }
+            ],
+            "dir": "NW",
+            "spd": 5,
+            "chng": null,
+            "rawSigmet": "WVEQ31 SEQU 242150\nSEFG SIGMET A4 VALID 242150/250350 SEGU-\nSEFG GUAYAQUIL FIR VA ERUPTION MT SANGAY PSN S0200 W07820\nVA CLD OBS AT 2110Z WI S0140 W07835 - S0200 W07820 - S0201 W07820 - \nS0148 W07843 - S0140 W07835 SFC/FL280 MOV NW 5KT \nFCST AT 0300Z WI S0141 W07837 - S0200 W07820 - S0201 W07820 - S0150 \nW07844 - S0141 W07837="
+        },
+        {
+            "isigmetId": 990886,
+            "icaoId": "SPJC",
+            "firId": "SPIM",
+            "firName": "SPIM LIMA",
+            "receiptTime": "2025-04-25 03:38:50",
+            "validTimeFrom": 1745552400,
+            "validTimeTo": 1745553000,
+            "seriesId": "B2",
+            "hazard": "TS",
+            "qualifier": "EMBD",
+            "base": null,
+            "top": 42000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": -6.317,
+                    "lon": -73.163
+                },
+                {
+                    "lat": -6.098,
+                    "lon": -73.276
+                },
+                {
+                    "lat": -5.25,
+                    "lon": -72.833
+                },
+                {
+                    "lat": -5.25,
+                    "lon": -73.867
+                },
+                {
+                    "lat": -6.317,
+                    "lon": -74.017
+                },
+                {
+                    "lat": -6.317,
+                    "lon": -73.163
+                }
+            ],
+            "dir": "-",
+            "spd": 0,
+            "chng": "INTSF",
+            "rawSigmet": "WSPR31 SPJC 250338\nSPIM SIGMET B2 VALID 250340/250640 SPJC-\nSPIM LIMA FIR EMBD TS OBS AT 0320Z E OF LINE S0515 W07352 -\nS0619 W07401 TOP FL420 STNR INTSF="
+        },
+        {
+            "isigmetId": 990705,
+            "icaoId": "RUMG",
+            "firId": "UHMM",
+            "firName": "UHMM MAGADAN",
+            "receiptTime": "2025-04-24 22:26:15",
+            "validTimeFrom": 1745539200,
+            "validTimeTo": 1745553600,
+            "seriesId": "M04",
+            "hazard": "TURB",
+            "qualifier": "SEV",
+            "base": 0,
+            "top": 15000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": 64,
+                    "lon": 180
+                },
+                {
+                    "lat": 61.517,
+                    "lon": 180
+                },
+                {
+                    "lat": 61.833,
+                    "lon": 174.75
+                },
+                {
+                    "lat": 62.333,
+                    "lon": 173
+                },
+                {
+                    "lat": 64,
+                    "lon": 173
+                },
+                {
+                    "lat": 64,
+                    "lon": 180
+                }
+            ],
+            "dir": "-",
+            "spd": 0,
+            "chng": "NC",
+            "rawSigmet": "WSRA31 RUMG 242225\nUHMM SIGMET M04 VALID 250000/250400 UHMM-\nUHMM MAGADAN FIR SEV TURB FCST WI N6400 E18000 - N6131 E18000 -\nN6150 E17445 - N6220 E17300 - N6400 E17300 - N6400 E18000\nSFC/FL150 STNR NC="
+        },
+        {
+            "isigmetId": 990756,
+            "icaoId": "VGHS",
+            "firId": "VGFR",
+            "firName": "VGFR DHAKA",
+            "receiptTime": "2025-04-24 23:30:27",
+            "validTimeFrom": 1745539200,
+            "validTimeTo": 1745553600,
+            "seriesId": "01",
+            "hazard": "TS",
+            "qualifier": "EMBD",
+            "base": null,
+            "top": 45000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": 26.517,
+                    "lon": 88.498
+                },
+                {
+                    "lat": 25.86,
+                    "lon": 88.08
+                },
+                {
+                    "lat": 25.276,
+                    "lon": 88.948
+                },
+                {
+                    "lat": 25.191,
+                    "lon": 88.458
+                },
+                {
+                    "lat": 24.64,
+                    "lon": 88.005
+                },
+                {
+                    "lat": 24.241,
+                    "lon": 88.706
+                },
+                {
+                    "lat": 23.277,
+                    "lon": 88.709
+                },
+                {
+                    "lat": 23.235,
+                    "lon": 88.876
+                },
+                {
+                    "lat": 21.659,
+                    "lon": 89.115
+                },
+                {
+                    "lat": 21.028,
+                    "lon": 91.979
+                },
+                {
+                    "lat": 21.998,
+                    "lon": 92.605
+                },
+                {
+                    "lat": 23.723,
+                    "lon": 92.215
+                },
+                {
+                    "lat": 22.93,
+                    "lon": 91.613
+                },
+                {
+                    "lat": 23.642,
+                    "lon": 91.144
+                },
+                {
+                    "lat": 24.074,
+                    "lon": 91.342
+                },
+                {
+                    "lat": 24.181,
+                    "lon": 91.994
+                },
+                {
+                    "lat": 25.068,
+                    "lon": 92.36
+                },
+                {
+                    "lat": 25.335,
+                    "lon": 89.856
+                },
+                {
+                    "lat": 26.169,
+                    "lon": 89.728
+                },
+                {
+                    "lat": 25.974,
+                    "lon": 89.563
+                },
+                {
+                    "lat": 26.517,
+                    "lon": 88.498
+                }
+            ],
+            "dir": "ESE",
+            "spd": 20,
+            "chng": "NC",
+            "rawSigmet": "WSBW20 VGHS 242330\nVGFR SIGMET 01 VALID 250000/250400 VGHS-\nVGFR DHAKA FIR EMBD TS FCST N OF N21 AND E OF E88 \nTOP FL450 MOV ESE 20KT NC="
+        },
+        {
+            "isigmetId": 990787,
+            "icaoId": "WMKK",
+            "firId": "WBFC",
+            "firName": "WBFC KOTA KINABALU",
+            "receiptTime": "2025-04-25 00:50:13",
+            "validTimeFrom": 1745542800,
+            "validTimeTo": 1745553600,
+            "seriesId": "1",
+            "hazard": "TS",
+            "qualifier": "EMBD",
+            "base": null,
+            "top": 51000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": 4.333,
+                    "lon": 117
+                },
+                {
+                    "lat": 4.354,
+                    "lon": 117.244
+                },
+                {
+                    "lat": 4.003,
+                    "lon": 118.03
+                },
+                {
+                    "lat": 4.012,
+                    "lon": 119.979
+                },
+                {
+                    "lat": 7.33,
+                    "lon": 117.636
+                },
+                {
+                    "lat": 7.33,
+                    "lon": 117
+                },
+                {
+                    "lat": 4.333,
+                    "lon": 117
+                }
+            ],
+            "dir": "W",
+            "spd": 15,
+            "chng": "NC",
+            "rawSigmet": "WSMS31 WMKK 250051\nWBFC SIGMET 1 VALID 250100/250400 WBKK-\nWBFC KOTA KINABALU FIR EMBD TS\nOBS S OF N0720 AND E OF E11700 TOP FL510 MOV W 15KT NC="
+        },
+        {
+            "isigmetId": 990834,
+            "icaoId": "WMKK",
+            "firId": "WBFC",
+            "firName": "WBFC KOTA KINABALU",
+            "receiptTime": "2025-04-25 02:38:22",
+            "validTimeFrom": 1745549100,
+            "validTimeTo": 1745553600,
+            "seriesId": "2",
+            "hazard": "TS",
+            "qualifier": "EMBD",
+            "base": null,
+            "top": 45000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": 6.267,
+                    "lon": 116.067
+                },
+                {
+                    "lat": 7.5,
+                    "lon": 115.467
+                },
+                {
+                    "lat": 7.5,
+                    "lon": 117
+                },
+                {
+                    "lat": 6.267,
+                    "lon": 117
+                },
+                {
+                    "lat": 6.267,
+                    "lon": 116.067
+                }
+            ],
+            "dir": "W",
+            "spd": 0,
+            "chng": "NC",
+            "rawSigmet": "WSMS31 WMKK 250239\nWBFC SIGMET 2 VALID 250245/250400 WBKK-\nWBFC KOTA KINABALU FIR EMBD TS\nOBS WI N0616 E11604 - N0730 E11528 - N0730 E11700 - N0616 E11700 -\nN0616 E11604 TOP FL450 MOV W NC="
+        },
+        {
+            "isigmetId": 990759,
+            "icaoId": "GOOY",
+            "firId": "GOOO/O",
+            "firName": "GOOO DAKAR OCEANIC",
+            "receiptTime": "2025-04-24 23:55:40",
+            "validTimeFrom": 1745539500,
+            "validTimeTo": 1745553900,
+            "seriesId": "A1",
+            "hazard": "TS",
+            "qualifier": "EMBD",
+            "base": null,
+            "top": 48000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": 4.133,
+                    "lon": -24.783
+                },
+                {
+                    "lat": 8.033,
+                    "lon": -17.633
+                },
+                {
+                    "lat": 0.05,
+                    "lon": -11.333
+                },
+                {
+                    "lat": 0.05,
+                    "lon": -19.2
+                },
+                {
+                    "lat": 4.133,
+                    "lon": -24.783
+                }
+            ],
+            "dir": "W",
+            "spd": 8,
+            "chng": "NC",
+            "rawSigmet": "WSSG31 GOOY 242355\nGOOO SIGMET A1 VALID 250005/250405 GOBD-\nGOOO DAKAR OCEANIC FIR/UIR EMBD TS OBS AT 2355Z\nWI N0408 W02447 - N0802 W01738 - N0003 W01120 - N0003 W01912 -\n   N0408 W02447   TOP FL480 MOV W 08KT NC="
+        },
+        {
+            "isigmetId": 990699,
+            "icaoId": "SEQU",
+            "firId": "SEFG",
+            "firName": "SEFG GUAYAQUIL",
+            "receiptTime": "2025-04-24 22:12:12",
+            "validTimeFrom": 1745532600,
+            "validTimeTo": 1745554200,
+            "seriesId": "5",
+            "hazard": "VA",
+            "qualifier": "REVENTADOR",
+            "base": 0,
+            "top": 16000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": -0.067,
+                    "lon": -77.65
+                },
+                {
+                    "lat": -0.083,
+                    "lon": -77.65
+                },
+                {
+                    "lat": -0.183,
+                    "lon": -77.817
+                },
+                {
+                    "lat": -0.083,
+                    "lon": -77.833
+                },
+                {
+                    "lat": -0.067,
+                    "lon": -77.65
+                }
+            ],
+            "dir": "W",
+            "spd": 5,
+            "chng": null,
+            "rawSigmet": "WVEQ31 SEQU 242210\nSEFG SIGMET 5 VALID 242210/250410 SEGU-\nSEFG GUAYAQUIL FIR VA ERUPTION MT REVENTADOR PSN S0004 W07739\nVA CLD OBS AT 2130Z WI S0004 W07739 - S0005 W07739 - S0011 W07749 -\nS0005 W07750 - S0004 W07739 SFC/FL160 MOV W 5KT\nFCST AT 0330Z WI S0002 W07755 - S0004 W07740 - S0005 W07739 - S0010\nW07755 - S0002 W07755="
+        },
+        {
+            "isigmetId": 990760,
+            "icaoId": "GOOY",
+            "firId": "GOOO",
+            "firName": "GOOO DAKAR TERRESTRE",
+            "receiptTime": "2025-04-25 00:02:31",
+            "validTimeFrom": 1745539800,
+            "validTimeTo": 1745554200,
+            "seriesId": "B1",
+            "hazard": "TS",
+            "qualifier": "EMBD",
+            "base": null,
+            "top": 48000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": 2.65,
+                    "lon": -6.85
+                },
+                {
+                    "lat": 2.133,
+                    "lon": -4
+                },
+                {
+                    "lat": 0.367,
+                    "lon": -4.7
+                },
+                {
+                    "lat": 1.333,
+                    "lon": -6.5
+                },
+                {
+                    "lat": 2.317,
+                    "lon": -7
+                },
+                {
+                    "lat": 2.65,
+                    "lon": -6.85
+                }
+            ],
+            "dir": "W",
+            "spd": 10,
+            "chng": "NC",
+            "rawSigmet": "WSSG31 GOOY 250002\nGOOO SIGMET B1 VALID 250010/250410 GOBD-\nGOOO DAKAR TERRESTRE FIR/UIR EMBD TS OBS AT 0000Z\nWI N0239 W00651 - N0208 W00400 - N0022 W00442 - N0120 W00630 -\n   N0219 W00700 - N0239 W00651   TOP FL480 MOV W 10KT NC="
+        },
+        {
+            "isigmetId": 990792,
+            "icaoId": "SABE",
+            "firId": "SAEF",
+            "firName": "SAEF EZEIZA",
+            "receiptTime": "2025-04-25 01:10:11",
+            "validTimeFrom": 1745543580,
+            "validTimeTo": 1745554380,
+            "seriesId": "1",
+            "hazard": "ICE",
+            "qualifier": "SEV",
+            "base": 10000,
+            "top": 18000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": -39,
+                    "lon": -71.267
+                },
+                {
+                    "lat": -41.283,
+                    "lon": -70.35
+                },
+                {
+                    "lat": -41.517,
+                    "lon": -71.633
+                },
+                {
+                    "lat": -39,
+                    "lon": -71.267
+                }
+            ],
+            "dir": "-",
+            "spd": 0,
+            "chng": "NC",
+            "rawSigmet": "WSAG31 SABE 250113\nSAEF SIGMET 1 VALID 250113/250413 SABE-\nSAEF EZEIZA FIR SEV ICE FCST AT 0113Z\nWI S3900 W07116 - S4117 W07021 - S4131 W07138 - S3900 W07116\nFL100/180 STNR NC="
+        }
+    ]
+}

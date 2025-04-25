@@ -146,8 +146,60 @@ document.addEventListener('DOMContentLoaded', function() {
             // Display the map with weather data
             updateWeatherMap(airports, altitudes);
             
-            // Parse and display the briefing in tiles
-            parseBriefingContent(data.report);
+            // Create a summary section at the top if it doesn't exist
+            let summarySection = document.getElementById('briefing-summary');
+            if (!summarySection) {
+                summarySection = document.createElement('div');
+                summarySection.id = 'briefing-summary';
+                summarySection.className = 'briefing-summary';
+                
+                const sectionHeader = document.createElement('div');
+                sectionHeader.className = 'section-header';
+                sectionHeader.innerHTML = '<h2>Weather Briefing Summary</h2>';
+                
+                summarySection.appendChild(sectionHeader);
+                
+                const summaryContent = document.createElement('div');
+                summaryContent.className = 'summary-content';
+                summarySection.appendChild(summaryContent);
+                
+                // Add detailed view button if we have a route_id
+                if (data.route_id) {
+                    const detailedViewBtn = document.createElement('a');
+                    detailedViewBtn.className = 'detailed-view-btn';
+                    detailedViewBtn.innerHTML = '<i class="fas fa-file-alt"></i> View Comprehensive Briefing';
+                    detailedViewBtn.href = `/flight-briefing/${data.route_id}`;
+                    detailedViewBtn.target = '_blank';
+                    
+                    // Create button container with description
+                    const btnContainer = document.createElement('div');
+                    btnContainer.className = 'detailed-view-container';
+                    btnContainer.innerHTML = '<p class="detailed-view-desc">Access full METAR, TAF, PIREP and SIGMET analysis</p>';
+                    btnContainer.appendChild(detailedViewBtn);
+                    
+                    summarySection.appendChild(btnContainer);
+                }
+                
+                // Insert at the top of the briefing section
+                briefingSection.insertBefore(summarySection, briefingSection.firstChild);
+            }
+            
+            // Update the summary content
+            const summaryContent = summarySection.querySelector('.summary-content');
+            
+            // Extract just the summary section from the full report
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(data.report, 'text/html');
+            const extractedSummary = doc.querySelector('.summary');
+            
+            if (extractedSummary) {
+                summaryContent.innerHTML = extractedSummary.innerHTML;
+            } else {
+                summaryContent.innerHTML = '<p>Flight briefing generated. Check details below.</p>';
+            }
+            
+            // Parse and display the detailed briefing in tiles
+            parseBriefingContent(data.report, data.component_analyses);
             
             // Show the briefing section
             briefingSection.style.display = 'block';
@@ -268,7 +320,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    function parseBriefingContent(htmlContent) {
+    function parseBriefingContent(htmlContent, componentAnalyses = {}) {
         // First, clean up the input HTML to handle different formats
         const cleanedHtml = htmlContent
             .replace(/```html|```/g, '')  // Remove any markdown code indicators
@@ -289,24 +341,82 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('hazards-content').innerHTML = hazardsSection.innerHTML || hazardsSection.textContent;
         }
         
+        // Handle PIREP section - use component analysis if available
         const pirepsSection = doc.querySelector('.pireps') || doc.querySelector('section:nth-child(3)');
-        if (pirepsSection) {
-            document.getElementById('pireps-content').innerHTML = pirepsSection.innerHTML || pirepsSection.textContent;
+        let pirepsContent = '';
+        
+        if (componentAnalyses.pirep) {
+            // Process markdown formatting in PIREP content
+            pirepsContent = formatAnalysisContent(componentAnalyses.pirep);
+        } else if (pirepsSection) {
+            pirepsContent = pirepsSection.innerHTML || pirepsSection.textContent;
         }
         
+        if (pirepsContent) {
+            document.getElementById('pireps-content').innerHTML = pirepsContent;
+        }
+        
+        // Handle SIGMET section - use component analysis if available
         const sigmetsSection = doc.querySelector('.sigmets') || doc.querySelector('section:nth-child(4)');
-        if (sigmetsSection) {
-            document.getElementById('sigmets-content').innerHTML = sigmetsSection.innerHTML || sigmetsSection.textContent;
+        let sigmetsContent = '';
+        
+        if (componentAnalyses.sigmet) {
+            // Process markdown formatting in SIGMET content
+            sigmetsContent = formatAnalysisContent(componentAnalyses.sigmet);
+        } else if (sigmetsSection) {
+            sigmetsContent = sigmetsSection.innerHTML || sigmetsSection.textContent;
         }
         
+        if (sigmetsContent) {
+            document.getElementById('sigmets-content').innerHTML = sigmetsContent;
+        }
+        
+        // Handle conditions section - enhance with METAR analysis if available
         const conditionsSection = doc.querySelector('.conditions') || doc.querySelector('section:nth-child(5)');
+        let conditionsContent = '';
+        
         if (conditionsSection) {
-            document.getElementById('conditions-content').innerHTML = conditionsSection.innerHTML || conditionsSection.textContent;
+            conditionsContent = conditionsSection.innerHTML || conditionsSection.textContent;
+            
+            // Append METAR data if available
+            if (componentAnalyses.metar) {
+                const metarContent = formatAnalysisContent(componentAnalyses.metar);
+                
+                if (metarContent) {
+                    conditionsContent += '<h4>Current Conditions (METAR)</h4>' + metarContent;
+                }
+            }
+        } else if (componentAnalyses.metar) {
+            const metarContent = formatAnalysisContent(componentAnalyses.metar);
+            conditionsContent = '<h3>Flight Conditions</h3>' + metarContent;
         }
         
+        if (conditionsContent) {
+            document.getElementById('conditions-content').innerHTML = conditionsContent;
+        }
+        
+        // Handle recommendations section - enhance with TAF if available
         const recommendationsSection = doc.querySelector('.recommendations') || doc.querySelector('section:nth-child(6)');
+        let recommendationsContent = '';
+        
         if (recommendationsSection) {
-            document.getElementById('recommendations-content').innerHTML = recommendationsSection.innerHTML || recommendationsSection.textContent;
+            recommendationsContent = recommendationsSection.innerHTML || recommendationsSection.textContent;
+            
+            // Append TAF data if available
+            if (componentAnalyses.taf) {
+                const tafContent = formatAnalysisContent(componentAnalyses.taf);
+                
+                if (tafContent) {
+                    recommendationsContent += '<h4>Forecast (TAF)</h4>' + tafContent;
+                }
+            }
+        } else if (componentAnalyses.taf) {
+            const tafContent = formatAnalysisContent(componentAnalyses.taf);
+            recommendationsContent = '<h3>Recommendations & Forecast</h3>' + tafContent;
+        }
+        
+        if (recommendationsContent) {
+            document.getElementById('recommendations-content').innerHTML = recommendationsContent;
         }
         
         // Apply severity styling to list items
@@ -316,8 +426,48 @@ document.addEventListener('DOMContentLoaded', function() {
         addExpandableTileListeners();
     }
     
+    // Helper function to fix markdown formatting issues
+    function formatAnalysisContent(content) {
+        if (!content) return '';
+        
+        // Clean up the content by removing markdown code blocks
+        let cleanedContent = content.replace(/```html|```/g, '');
+        
+        // If the content is actual HTML, parse it properly
+        if (cleanedContent.includes('<')) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(cleanedContent, 'text/html');
+            
+            // Check if parsing was successful
+            if (doc.body && doc.body.innerHTML) {
+                return doc.body.innerHTML;
+            }
+        }
+        
+        // Format potential markdown lists
+        cleanedContent = cleanedContent
+            // Convert markdown lists to HTML lists
+            .replace(/^\s*[-*]\s+(.+)$/gm, '<li>$1</li>')
+            .replace(/(<\/li>\n<li>)/g, '</li>\n<li>')
+            .replace(/(<li>.*<\/li>\n)+/g, '<ul>$&</ul>')
+            // Convert markdown headings to HTML headings
+            .replace(/^#+\s+(.+)$/gm, function(match, p1) {
+                const level = match.trim().indexOf(' ');
+                return `<h${level}>${p1}</h${level}>`;
+            })
+            // Convert markdown emphasis to HTML emphasis
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+            // Fix any excessive line breaks
+            .replace(/\n{3,}/g, '\n\n')
+            // Convert newlines to <br> tags
+            .replace(/\n/g, '<br>');
+        
+        return cleanedContent;
+    }
+    
     function applySeverityStyling() {
-        const allListItems = document.querySelectorAll('.tile-content li');
+        const allListItems = document.querySelectorAll('.tile-content li, .summary-content li');
         const keywordMap = {
             high: ['severe', 'dangerous', 'extreme', 'warning', 'hazardous', 'significant', 'heavy', 'high'],
             medium: ['moderate', 'caution', 'potential', 'deteriorating', 'advisory', 'developing'],

@@ -1,0 +1,44 @@
+[
+    {
+        "metar_id": 742557284,
+        "icaoId": "KBXK",
+        "receiptTime": "2025-04-25 03:38:18",
+        "obsTime": 1745552100,
+        "reportTime": "2025-04-25 03:35:00",
+        "temp": 25,
+        "dewp": -4,
+        "wdir": 0,
+        "wspd": 0,
+        "wgst": null,
+        "visib": "10+",
+        "altim": 1008.9,
+        "slp": null,
+        "qcField": 6,
+        "wxString": null,
+        "presTend": null,
+        "maxT": null,
+        "minT": null,
+        "maxT24": null,
+        "minT24": null,
+        "precip": null,
+        "pcp3hr": null,
+        "pcp6hr": null,
+        "pcp24hr": null,
+        "snow": null,
+        "vertVis": null,
+        "metarType": "METAR",
+        "rawOb": "KBXK 250335Z AUTO 00000KT 10SM CLR 25/M04 A2979 RMK AO2",
+        "mostRecent": 1,
+        "lat": 33.4178,
+        "lon": -112.688,
+        "elev": 303,
+        "prior": 6,
+        "name": "Buckeye Muni, AZ, US",
+        "clouds": [
+            {
+                "cover": "CLR",
+                "base": null
+            }
+        ]
+    }
+]

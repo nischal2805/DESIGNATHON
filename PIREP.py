@@ -1,7 +1,8 @@
 import requests
 import json
 
-def fetch_pirep_raw(icao_code):
+def fetch_pirep_raw(icao_code, save_file=True):
+    """Fetch PIREP data for an airport code"""
     url = f"https://aviationweather.gov/cgi-bin/data/pirep.php?ids={icao_code.upper()}&format=raw"
 
     try:
@@ -16,15 +17,19 @@ def fetch_pirep_raw(icao_code):
             "pireps": raw_data.splitlines()
         }
 
-        # Save to JSON file instead of printing
-        filename = f"{icao_code.upper()}_pireps.json"
-        with open(filename, 'w') as file:
-            json.dump(output_json, file, indent=4)
-        
-        print(f"Data saved to {filename}")
+        # Save to JSON file only if save_file is True
+        if save_file:
+            filename = f"{icao_code.upper()}_pireps.json"
+            with open(filename, 'w') as file:
+                json.dump(output_json, file, indent=4)
+            print(f"Data saved to {filename}")
+
+        # Return the data regardless
+        return output_json
 
     except requests.exceptions.RequestException as e:
         print(f"Error fetching data: {e}")
+        return None
 
 if __name__ == "__main__":
     user_input = input("Enter ICAO airport code (e.g., KJFK): ")

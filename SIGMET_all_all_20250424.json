@@ -1,0 +1,481 @@
+{
+    "region": "all",
+    "hazard": "all",
+    "timestamp": "2025-04-24T22:07:57.917747",
+    "data": [
+        {
+            "isigmetId": 990326,
+            "icaoId": "YMMC",
+            "firId": "YMMM",
+            "firName": "YMMM MELBOURNE",
+            "receiptTime": "2025-04-24 11:56:35",
+            "validTimeFrom": 1745498700,
+            "validTimeTo": 1745513100,
+            "seriesId": "O03",
+            "hazard": "ICE",
+            "qualifier": "SEV",
+            "base": 11000,
+            "top": 21000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": -27.833,
+                    "lon": 127.333
+                },
+                {
+                    "lat": -27.5,
+                    "lon": 128.667
+                },
+                {
+                    "lat": -29.167,
+                    "lon": 133.667
+                },
+                {
+                    "lat": -40.333,
+                    "lon": 137.833
+                },
+                {
+                    "lat": -40.667,
+                    "lon": 136.667
+                },
+                {
+                    "lat": -37.667,
+                    "lon": 128.333
+                },
+                {
+                    "lat": -31.5,
+                    "lon": 130.667
+                }
+            ],
+            "dir": "E",
+            "spd": 25,
+            "chng": "NC",
+            "rawSigmet": "WSAU21 YMMC 241156\nYMMM SIGMET O03 VALID 241245/241645 YMMC-\nYMMM MELBOURNE FIR SEV ICE FCST WI S2750 E12720 - S2730 E12840 -\nS2910 E13340 - S4020 E13750 - S4040 E13640 - S3740 E12820 - S3130\nE13040 FL110/210 MOV E 25KT NC="
+        },
+        {
+            "isigmetId": 990356,
+            "icaoId": "ZUUU",
+            "firId": "ZPKM",
+            "firName": "ZPKM KUNMING",
+            "receiptTime": "2025-04-24 12:30:40",
+            "validTimeFrom": 1745499000,
+            "validTimeTo": 1745513400,
+            "seriesId": "2",
+            "hazard": "TS",
+            "qualifier": "EMBD",
+            "base": null,
+            "top": 39000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": 29.2,
+                    "lon": 109.383
+                },
+                {
+                    "lat": 26.667,
+                    "lon": 109.183
+                },
+                {
+                    "lat": 22.5,
+                    "lon": 103.95
+                },
+                {
+                    "lat": 24.017,
+                    "lon": 97.617
+                },
+                {
+                    "lat": 29.767,
+                    "lon": 99.067
+                },
+                {
+                    "lat": 30.683,
+                    "lon": 109.417
+                },
+                {
+                    "lat": 29.2,
+                    "lon": 109.383
+                }
+            ],
+            "dir": "E",
+            "spd": 8,
+            "chng": "WKN",
+            "rawSigmet": "WSCI36 ZUUU 241229\nZPKM SIGMET 2 VALID 241250/241650 ZUUU- ZPKM KUNMING FIR EMBD TS\n FCST WI N2912 E10923-N2640 E10911-N2230 E10357-N2401 E09737-N2946\n E09904-N3041 E10925-N2912 E10923 TOP FL390 MOV E 15KMH WKN="
+        },
+        {
+            "isigmetId": 990361,
+            "icaoId": "SCCI",
+            "firId": "SCCZ",
+            "firName": "SCCZ PUNTA ARENAS",
+            "receiptTime": "2025-04-24 12:52:26",
+            "validTimeFrom": 1745499120,
+            "validTimeTo": 1745513520,
+            "seriesId": "A4",
+            "hazard": "TURB",
+            "qualifier": "SEV",
+            "base": 16000,
+            "top": 34000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": -47,
+                    "lon": -84
+                },
+                {
+                    "lat": -58,
+                    "lon": -78
+                },
+                {
+                    "lat": -58,
+                    "lon": -74
+                },
+                {
+                    "lat": -47,
+                    "lon": -79
+                }
+            ],
+            "dir": "SE",
+            "spd": 15,
+            "chng": "NC",
+            "rawSigmet": "WSCH31 SCCI 241252\nSCCZ SIGMET A4 VALID 241252/241652 SCCI-\nSCCZ PUNTA ARENAS FIR SEV TURB FCST WI S4700 W08400 - S5800 W07800 - \nS5800 W07400 - S4700 W07900 FL160/340 MOV SE 15KT NC="
+        },
+        {
+            "isigmetId": 990346,
+            "icaoId": "FCBB",
+            "firId": "FCCC",
+            "firName": "FCCC BRAZZAVILLE",
+            "receiptTime": "2025-04-24 12:17:06",
+            "validTimeFrom": 1745499300,
+            "validTimeTo": 1745513700,
+            "seriesId": "A4",
+            "hazard": "TS",
+            "qualifier": "EMBD",
+            "base": null,
+            "top": 39000,
+            "geom": "AREAS",
+            "coords": [
+                [
+                    {
+                        "lat": 8,
+                        "lon": 12.57
+                    },
+                    {
+                        "lat": 2.37,
+                        "lon": 13.15
+                    },
+                    {
+                        "lat": 2.37,
+                        "lon": 15.15
+                    },
+                    {
+                        "lat": 8,
+                        "lon": 14.57
+                    },
+                    {
+                        "lat": 8,
+                        "lon": 12.57
+                    }
+                ],
+                [
+                    {
+                        "lat": 0.8,
+                        "lon": 10.1
+                    },
+                    {
+                        "lat": 0.15,
+                        "lon": 17.62
+                    },
+                    {
+                        "lat": -1.85,
+                        "lon": 17.62
+                    },
+                    {
+                        "lat": -1.2,
+                        "lon": 10.1
+                    },
+                    {
+                        "lat": 0.8,
+                        "lon": 10.1
+                    }
+                ]
+            ],
+            "dir": "W",
+            "spd": 5,
+            "chng": "INTSF",
+            "rawSigmet": "WSCG31 FCBB 241215\nFCCC SIGMET A4 VALID 241255/241655 FCBB-\nFCCC BRAZZAVILLE FIR/UIR EMBD TS OBS AT 1200Z\nE OF LINE N0800 E01234 - N0222 E01309\nS OF LINE N0048 E01006 - N0009 E01737\nTOP FL390 MOV W 05KT INTSF\nW OF LINE N0621 E01155 - S0505 E01002\nTOP FL430 MOV W 05KT INTSF="
+        },
+        {
+            "isigmetId": 990315,
+            "icaoId": "YMRF",
+            "firId": "YMMM",
+            "firName": "YMMM MELBOURNE",
+            "receiptTime": "2025-04-24 11:29:58",
+            "validTimeFrom": 1745499600,
+            "validTimeTo": 1745514000,
+            "seriesId": "P02",
+            "hazard": "TURB",
+            "qualifier": "SEV",
+            "base": 0,
+            "top": 6000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": -42,
+                    "lon": 146.333
+                },
+                {
+                    "lat": -42,
+                    "lon": 148.333
+                },
+                {
+                    "lat": -43.667,
+                    "lon": 147.5
+                },
+                {
+                    "lat": -43.667,
+                    "lon": 146.167
+                }
+            ],
+            "dir": "-",
+            "spd": 0,
+            "chng": "NC",
+            "rawSigmet": "WSAU21 YMRF 241129\nYMMM SIGMET P02 VALID 241300/241700 YMRF-\nYMMM MELBOURNE FIR SEV TURB FCST WI S4200 E14620 - S4200 E14820 -\nS4340 E14730 - S4340 E14610 SFC/6000FT STNR NC="
+        },
+        {
+            "isigmetId": 990336,
+            "icaoId": "YMMC",
+            "firId": "YMMM",
+            "firName": "YMMM MELBOURNE",
+            "receiptTime": "2025-04-24 12:07:22",
+            "validTimeFrom": 1745499600,
+            "validTimeTo": 1745514000,
+            "seriesId": "N03",
+            "hazard": "TURB",
+            "qualifier": "SEV",
+            "base": 24000,
+            "top": 34000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": -28,
+                    "lon": 98.833
+                },
+                {
+                    "lat": -29,
+                    "lon": 123.167
+                },
+                {
+                    "lat": -31.167,
+                    "lon": 124.833
+                },
+                {
+                    "lat": -32.167,
+                    "lon": 122.167
+                },
+                {
+                    "lat": -33.5,
+                    "lon": 112.5
+                },
+                {
+                    "lat": -31.333,
+                    "lon": 101.5
+                },
+                {
+                    "lat": -29,
+                    "lon": 97
+                }
+            ],
+            "dir": "E",
+            "spd": 30,
+            "chng": "NC",
+            "rawSigmet": "WSAU21 YMMC 241207\nYMMM SIGMET N03 VALID 241300/241700 YMMC-\nYMMM MELBOURNE FIR SEV TURB FCST WI S2800 E09850 - S2900 E12310 -\nS3110 E12450 - S3210 E12210 - S3330 E11230 - S3120 E10130 - S2900\nE09700 FL240/340 MOV E 30KT NC="
+        },
+        {
+            "isigmetId": 990360,
+            "icaoId": "RCTP",
+            "firId": "RCAA",
+            "firName": "RCAA TAIPEI",
+            "receiptTime": "2025-04-24 12:45:10",
+            "validTimeFrom": 1745499600,
+            "validTimeTo": 1745514000,
+            "seriesId": "4",
+            "hazard": "TS",
+            "qualifier": "EMBD",
+            "base": null,
+            "top": 42000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": 29.008,
+                    "lon": 124
+                },
+                {
+                    "lat": 26.868,
+                    "lon": 121.789
+                },
+                {
+                    "lat": 25.09,
+                    "lon": 120.07
+                },
+                {
+                    "lat": 23.034,
+                    "lon": 117.5
+                },
+                {
+                    "lat": 23,
+                    "lon": 117.5
+                },
+                {
+                    "lat": 25.991,
+                    "lon": 123.981
+                },
+                {
+                    "lat": 28.718,
+                    "lon": 124
+                },
+                {
+                    "lat": 29.008,
+                    "lon": 124
+                }
+            ],
+            "dir": "E",
+            "spd": 15,
+            "chng": "NC",
+            "rawSigmet": "WSCI31 RCTP 241244\nRCAA SIGMET 4 VALID 241300/241700 RCTP-\nRCAA TAIPEI FIR EMBD TS FCST N OF LINE N2300 E11730 - N2600 E12400\nTOP FL420 MOV E 15KT NC="
+        },
+        {
+            "isigmetId": 990373,
+            "icaoId": "YMMC",
+            "firId": "YMMM",
+            "firName": "YMMM MELBOURNE",
+            "receiptTime": "2025-04-24 13:12:35",
+            "validTimeFrom": 1745503200,
+            "validTimeTo": 1745514000,
+            "seriesId": "S01",
+            "hazard": "ICE",
+            "qualifier": "SEV",
+            "base": null,
+            "top": null,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": -43,
+                    "lon": 140.5
+                },
+                {
+                    "lat": -42,
+                    "lon": 141.667
+                },
+                {
+                    "lat": -44.5,
+                    "lon": 146.333
+                },
+                {
+                    "lat": -46.833,
+                    "lon": 148.833
+                },
+                {
+                    "lat": -47.333,
+                    "lon": 146.833
+                },
+                {
+                    "lat": -45.167,
+                    "lon": 144.667
+                }
+            ],
+            "dir": null,
+            "spd": null,
+            "chng": null,
+            "rawSigmet": "WSAU21 YMMC 241312\nYMMM SIGMET S01 VALID 241400/241700 YMMC-\nYMMM MELBOURNE FIR SEV ICE FCST WI S4300 E14030 - S4200 E14140 -\nS4430 E14620 - S4650 E14850 - S4720 E14650 - S4510 E14440\n9000FT/FL180 MOV NE 15KT NC="
+        },
+        {
+            "isigmetId": 990425,
+            "icaoId": "LFPW",
+            "firId": "LFMM",
+            "firName": "LFMM MARSEILLE",
+            "receiptTime": "2025-04-24 14:55:16",
+            "validTimeFrom": 1745506800,
+            "validTimeTo": 1745514000,
+            "seriesId": "U07",
+            "hazard": "TURB",
+            "qualifier": "SEV",
+            "base": 0,
+            "top": 5000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": 42.75,
+                    "lon": 2.75
+                },
+                {
+                    "lat": 42.75,
+                    "lon": 2.5
+                },
+                {
+                    "lat": 43.75,
+                    "lon": 2.75
+                },
+                {
+                    "lat": 44,
+                    "lon": 3.25
+                },
+                {
+                    "lat": 44,
+                    "lon": 3.5
+                },
+                {
+                    "lat": 43.25,
+                    "lon": 2.75
+                },
+                {
+                    "lat": 42.75,
+                    "lon": 2.75
+                }
+            ],
+            "dir": "-",
+            "spd": 0,
+            "chng": "WKN",
+            "rawSigmet": "WSFR34 LFPW 241455\nLFMM SIGMET U07 VALID 241500/241700 LFPW-\nLFMM MARSEILLE FIR/UIR SEV TURB FCST WI N4245 E00245 - N4245 E00230 -\n N4345 E00245 - N4400 E00315 - N4400 E00330 - N4315 E00245 - N4245\nE00245 SFC/FL050 STNR WKN="
+        },
+        {
+            "isigmetId": 990426,
+            "icaoId": "LFPW",
+            "firId": "LFBB",
+            "firName": "LFBB BORDEAUX",
+            "receiptTime": "2025-04-24 14:55:16",
+            "validTimeFrom": 1745506800,
+            "validTimeTo": 1745514000,
+            "seriesId": "U04",
+            "hazard": "TURB",
+            "qualifier": "SEV",
+            "base": 0,
+            "top": 5000,
+            "geom": "AREA",
+            "coords": [
+                {
+                    "lat": 42.75,
+                    "lon": 2.5
+                },
+                {
+                    "lat": 42.75,
+                    "lon": 2.25
+                },
+                {
+                    "lat": 43.5,
+                    "lon": 2.25
+                },
+                {
+                    "lat": 43.75,
+                    "lon": 2.75
+                },
+                {
+                    "lat": 42.75,
+                    "lon": 2.5
+                }
+            ],
+            "dir": "-",
+            "spd": 0,
+            "chng": "WKN",
+            "rawSigmet": "WSFR32 LFPW 241455\nLFBB SIGMET U04 VALID 241500/241700 LFPW-\nLFBB BORDEAUX FIR/UIR SEV TURB FCST WI N4245 E00230 - N4245 E00215 -\nN4330 E00215 - N4345 E00245 - N4245 E00230 SFC/FL050 STNR WKN="
+        }
+    ]
+}

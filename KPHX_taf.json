@@ -1,0 +1,161 @@
+[
+    {
+        "tafId": 21081266,
+        "icaoId": "KPHX",
+        "dbPopTime": "2025-04-25 03:08:41",
+        "bulletinTime": "2025-04-25 03:08:00",
+        "issueTime": "2025-04-25 03:08:00",
+        "validTimeFrom": 1745550000,
+        "validTimeTo": 1745647200,
+        "rawTAF": "KPHX 250308Z 2503/2606 30007KT P6SM FEW250 FM250900 10005KT P6SM SKC FM251700 17011G18KT P6SM SKC FM252100 23015G25KT P6SM SKC FM260300 25008KT P6SM SKC",
+        "mostRecent": 1,
+        "remarks": "AMD",
+        "lat": 33.4278,
+        "lon": -112.004,
+        "elev": 338,
+        "prior": 1,
+        "name": "Phoenix/Sky Harbor Intl, AZ, US",
+        "fcsts": [
+            {
+                "timeGroup": 0,
+                "timeFrom": 1745550000,
+                "timeTo": 1745571600,
+                "timeBec": null,
+                "fcstChange": null,
+                "probability": null,
+                "wdir": 300,
+                "wspd": 7,
+                "wgst": null,
+                "wshearHgt": null,
+                "wshearDir": null,
+                "wshearSpd": null,
+                "visib": "6+",
+                "altim": null,
+                "vertVis": null,
+                "wxString": null,
+                "notDecoded": null,
+                "clouds": [
+                    {
+                        "cover": "FEW",
+                        "base": 25000,
+                        "type": null
+                    }
+                ],
+                "icgTurb": [],
+                "temp": []
+            },
+            {
+                "timeGroup": 1,
+                "timeFrom": 1745571600,
+                "timeTo": 1745600400,
+                "timeBec": null,
+                "fcstChange": "FM",
+                "probability": null,
+                "wdir": 100,
+                "wspd": 5,
+                "wgst": null,
+                "wshearHgt": null,
+                "wshearDir": null,
+                "wshearSpd": null,
+                "visib": "6+",
+                "altim": null,
+                "vertVis": null,
+                "wxString": null,
+                "notDecoded": null,
+                "clouds": [
+                    {
+                        "cover": "SKC",
+                        "base": null,
+                        "type": null
+                    }
+                ],
+                "icgTurb": [],
+                "temp": []
+            },
+            {
+                "timeGroup": 2,
+                "timeFrom": 1745600400,
+                "timeTo": 1745614800,
+                "timeBec": null,
+                "fcstChange": "FM",
+                "probability": null,
+                "wdir": 170,
+                "wspd": 11,
+                "wgst": 18,
+                "wshearHgt": null,
+                "wshearDir": null,
+                "wshearSpd": null,
+                "visib": "6+",
+                "altim": null,
+                "vertVis": null,
+                "wxString": null,
+                "notDecoded": null,
+                "clouds": [
+                    {
+                        "cover": "SKC",
+                        "base": null,
+                        "type": null
+                    }
+                ],
+                "icgTurb": [],
+                "temp": []
+            },
+            {
+                "timeGroup": 3,
+                "timeFrom": 1745614800,
+                "timeTo": 1745636400,
+                "timeBec": null,
+                "fcstChange": "FM",
+                "probability": null,
+                "wdir": 230,
+                "wspd": 15,
+                "wgst": 25,
+                "wshearHgt": null,
+                "wshearDir": null,
+                "wshearSpd": null,
+                "visib": "6+",
+                "altim": null,
+                "vertVis": null,
+                "wxString": null,
+                "notDecoded": null,
+                "clouds": [
+                    {
+                        "cover": "SKC",
+                        "base": null,
+                        "type": null
+                    }
+                ],
+                "icgTurb": [],
+                "temp": []
+            },
+            {
+                "timeGroup": 4,
+                "timeFrom": 1745636400,
+                "timeTo": 1745647200,
+                "timeBec": null,
+                "fcstChange": "FM",
+                "probability": null,
+                "wdir": 250,
+                "wspd": 8,
+                "wgst": null,
+                "wshearHgt": null,
+                "wshearDir": null,
+                "wshearSpd": null,
+                "visib": "6+",
+                "altim": null,
+                "vertVis": null,
+                "wxString": null,
+                "notDecoded": null,
+                "clouds": [
+                    {
+                        "cover": "SKC",
+                        "base": null,
+                        "type": null
+                    }
+                ],
+                "icgTurb": [],
+                "temp": []
+            }
+        ]
+    }
+]

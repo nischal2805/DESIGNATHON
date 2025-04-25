@@ -2,150 +2,135 @@ import os
 import json
 import requests
 import datetime
-from flask import Flask, request, jsonify, render_template, redirect, url_for
+from flask import Flask, request, jsonify, render_template, redirect, url_for, session
 from PIREP import fetch_pirep_raw
 from sigmat import get_sigmet_data
+from METAR import fetch_metar_raw
+from TAF import fetch_taf_raw
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
+app.secret_key = 'aviation_briefing_secret_key'  # Needed for session
 
-def process_with_ollama(data, route_info=None):
-    """Process weather data with Ollama - with improvements for token limit handling"""
+# In-memory cache for briefings (alternative to file storage)
+briefing_cache = {}
+
+def process_data_with_ollama(data_type, data, route_info=None):
+    """Process a specific type of weather data with Ollama"""
     route_description = ""
     if route_info:
         route_description = f"Flight Route: {' → '.join(route_info)}\n\n"
     
-    # Prepare a more concise version of the data to fit within token limits
-    concise_data = {"route": route_info}
-    
-    # Extract essential PIREP information
-    if 'pirep' in data:
-        concise_data['pirep'] = {}
-        for airport, pireps in data['pirep'].items():
-            # For each airport, extract only important fields from PIREPs
-            if isinstance(pireps, list):
-                concise_data['pirep'][airport] = [
-                    extract_important_pirep_info(p) for p in pireps[:10]  # Limit to first 10 PIREPs
-                ]
-            else:
-                concise_data['pirep'][airport] = "No structured PIREP data available"
-    
-    # Extract essential SIGMET information
-    if 'sigmet' in data and 'data' in data['sigmet']:
-        sigmets = data['sigmet']['data']
-        if isinstance(sigmets, list):
-            concise_data['sigmet'] = [
-                extract_important_sigmet_info(s) for s in sigmets[:5]  # Limit to first 5 SIGMETs
-            ]
-        else:
-            concise_data['sigmet'] = "No structured SIGMET data available"
-    
-    prompt = f"""
-    You are an aviation weather briefing specialist. Create a well-structured HTML pilot briefing based on this aviation weather data:
-    
-    {route_description}{json.dumps(concise_data, indent=2)}
-    
-    IMPORTANT: RESPOND WITH CLEAN HTML ONLY, NO MARKDOWN.
-    
-    Structure your response with these exact HTML sections:
-    <section class="summary">
-        <h3>SUMMARY</h3>
-        <p>Brief overview of critical conditions in 2-3 sentences.</p>
-    </section>
-    
-    <section class="hazards">
-        <h3>HAZARD ALERTS</h3>
-        <ul>
-            <li>Hazard 1 with severity rating (high/medium/low)</li>
-        </ul>
-    </section>
-    
-    <section class="pireps">
-        <h3>PILOT REPORTS</h3>
-        <ul>
-            <li>Important PIREP data with location and altitude</li>
-        </ul>
-    </section>
-    
-    <section class="sigmets">
-        <h3>SIGNIFICANT METEOROLOGICAL INFORMATION</h3>
-        <ul>
-            <li>Interpret SIGMETs in practical terms</li>
-        </ul>
-    </section>
-    
-    <section class="conditions">
-        <h3>FLIGHT CONDITIONS</h3>
-        <ul>
-            <li>IFR/VFR conditions with numeric values</li>
-        </ul>
-    </section>
-    
-    <section class="recommendations">
-        <h3>RECOMMENDATIONS</h3>
-        <ul>
-            <li>Specific flight planning advice</li>
-        </ul>
-    </section>
-    
-    Include severity metrics where appropriate (assign low/medium/high severity).
-    Use standard aviation terminology and abbreviations familiar to pilots.
-    Do not include any markdown formatting, just clean HTML.
-    Use data-attribute tags for severity levels in your list items (data-severity="high").
-    If no data is available for a section, indicate briefly rather than omitting the section.
-    """
+    # Create a prompt specific to the data type
+    if data_type == "pirep":
+        prompt = f"""
+        You are an aviation weather specialist. Analyze these Pilot Reports (PIREPs) and create a concise HTML summary:
+        
+        {route_description}{json.dumps(data, indent=2)}
+        
+        Focus on turbulence, icing, cloud tops, and visibility reports.
+        Format your response as clean HTML with severity ratings (high/medium/low).
+        Use data-attribute tags for severity levels in your list items (data-severity="high").
+        Keep your response under 500 words to ensure it fits within token limits.
+        """
+    elif data_type == "sigmet":
+        prompt = f"""
+        You are an aviation weather specialist. Analyze these SIGMETs and create a concise HTML summary:
+        
+        {route_description}{json.dumps(data, indent=2)}
+        
+        Interpret SIGMETs in practical terms for pilots with clear hazard descriptions.
+        Format your response as clean HTML with severity ratings (high/medium/low).
+        Use data-attribute tags for severity levels in your list items (data-severity="high").
+        Keep your response under 500 words to ensure it fits within token limits.
+        """
+    elif data_type == "metar":
+        prompt = f"""
+        You are an aviation weather specialist. Analyze these METAR reports and create a concise HTML summary:
+        
+        {route_description}{json.dumps(data, indent=2)}
+        
+        Focus on ceiling, visibility, wind, and any special conditions.
+        Format your response as clean HTML with IFR/MVFR/VFR classifications.
+        Use data-attribute tags for flight conditions in your list items (data-condition="IFR").
+        Keep your response under 500 words to ensure it fits within token limits.
+        """
+    elif data_type == "taf":
+        prompt = f"""
+        You are an aviation weather specialist. Analyze these TAF forecasts and create a concise HTML summary:
+        
+        {route_description}{json.dumps(data, indent=2)}
+        
+        Focus on forecast changes, expected conditions, and timing.
+        Format your response as clean HTML with time periods clearly marked.
+        Keep your response under 500 words to ensure it fits within token limits.
+        """
+    elif data_type == "summary":
+        prompt = f"""
+        You are an aviation weather briefing specialist. Create a well-structured HTML pilot briefing based on these pre-analyzed aviation weather components:
+        
+        {route_description}
+        
+        PIREP Analysis: {data.get('pirep', 'No PIREP data available')}
+        
+        SIGMET Analysis: {data.get('sigmet', 'No SIGMET data available')}
+        
+        METAR Analysis: {data.get('metar', 'No METAR data available')}
+        
+        TAF Analysis: {data.get('taf', 'No TAF data available')}
+        
+        IMPORTANT: RESPOND WITH CLEAN HTML ONLY, NO MARKDOWN.
+        
+        Structure your response with these exact HTML sections:
+        <section class="summary">
+            <h3>SUMMARY</h3>
+            <p>Brief overview of critical conditions in 2-3 sentences.</p>
+        </section>
+        
+        <section class="hazards">
+            <h3>HAZARD ALERTS</h3>
+            <ul>
+                <li>Hazard 1 with severity rating (high/medium/low)</li>
+            </ul>
+        </section>
+        
+        <section class="conditions">
+            <h3>FLIGHT CONDITIONS</h3>
+            <ul>
+                <li>IFR/VFR conditions with numeric values</li>
+            </ul>
+        </section>
+        
+        <section class="recommendations">
+            <h3>RECOMMENDATIONS</h3>
+            <ul>
+                <li>Specific flight planning advice</li>
+            </ul>
+        </section>
+        
+        Include severity metrics where appropriate (assign low/medium/high severity).
+        Use standard aviation terminology and abbreviations familiar to pilots.
+        Use data-attribute tags for severity levels in your list items (data-severity="high").
+        """
     
     try:
         response = requests.post('http://localhost:11434/api/chat',
-                               json={
-                                   "model": "llama3.1:latest", 
-                                   "messages": [{"role": "user", "content": prompt}],
-                                   "stream": False,
-                                   "options": {"temperature": 0.1, "num_ctx": 4096}  # Increase context window if possible
-                               }, timeout=60)  # Increased timeout
+                              json={
+                                  "model": "llama3.1:latest", 
+                                  "messages": [{"role": "user", "content": prompt}],
+                                  "stream": False,
+                                  "options": {"temperature": 0.1, "num_ctx": 4096}
+                              }, timeout=60)
         
         if response.status_code == 200:
-            return response.json().get('message', {}).get('content', "Error: Unexpected response format")
+            return response.json().get('message', {}).get('content', f"Error: Unexpected response format for {data_type}")
         else:
-            return f"Error: Ollama returned status code {response.status_code}. Response: {response.text}"
+            return f"Error processing {data_type}: Ollama returned status code {response.status_code}."
     except requests.exceptions.ConnectionError:
-        return "Error: Cannot connect to Ollama. Make sure Ollama is running on localhost:11434."
+        return f"Error processing {data_type}: Cannot connect to Ollama. Make sure Ollama is running on localhost:11434."
     except requests.exceptions.Timeout:
-        return "Error: Request to Ollama timed out. The service might be overwhelmed."
+        return f"Error processing {data_type}: Request to Ollama timed out."
     except Exception as e:
-        return f"Error: {str(e)}"
-
-def extract_important_pirep_info(pirep):
-    """Extract only the most important info from a PIREP to reduce token count"""
-    # This is a placeholder - customize based on your PIREP structure
-    if isinstance(pirep, str):
-        # Try to extract key info from the PIREP string
-        parts = pirep.split()
-        return " ".join(parts[:20]) if len(parts) > 20 else pirep
-    
-    if isinstance(pirep, dict):
-        # Extract only essential fields
-        essential = {}
-        key_fields = ['altitude', 'aircraft_ref', 'location', 'time', 'turbulence', 'icing', 'remarks']
-        for field in key_fields:
-            if field in pirep:
-                essential[field] = pirep[field]
-        return essential
-    
-    return "PIREP data format not recognized"
-
-def extract_important_sigmet_info(sigmet):
-    """Extract only the most important info from a SIGMET to reduce token count"""
-    # This is a placeholder - customize based on your SIGMET structure
-    if isinstance(sigmet, dict):
-        # Extract only essential fields
-        essential = {}
-        key_fields = ['hazard', 'area_affected', 'valid_time_from', 'valid_time_to', 'altitude', 'movement']
-        for field in key_fields:
-            if field in sigmet:
-                essential[field] = sigmet[field]
-        return essential
-    
-    return "SIGMET data format not recognized"
+        return f"Error processing {data_type}: {str(e)}"
 
 @app.route('/')
 def index():
@@ -154,6 +139,15 @@ def index():
 @app.route('/flight-plan', methods=['GET'])
 def flight_plan():
     return render_template('flight_plan.html')
+
+@app.route('/flight-briefing/<route_id>', methods=['GET'])
+def flight_briefing(route_id):
+    """Display detailed briefing from cache instead of files"""
+    if route_id in briefing_cache:
+        briefing = briefing_cache[route_id]
+        return render_template('flight_briefing.html', briefing=briefing)
+    else:
+        return redirect('/flight-plan')
 
 @app.route('/api/route-briefing', methods=['POST'])
 def route_briefing():
@@ -180,13 +174,18 @@ def route_briefing():
                 airports.append(airport)
                 altitudes[airport] = altitude
             except (ValueError, IndexError):
-                # Handle case where altitude isn't a valid number
                 airports.append(airport)
     
     if not airports:
         return jsonify({'error': 'No valid airports provided'})
     
-    results = {}
+    results = {
+        "pirep": {},
+        "sigmet": {},
+        "metar": {},
+        "taf": {}
+    }
+    
     route_info = []
     
     # Process each airport in the route
@@ -195,122 +194,94 @@ def route_briefing():
         altitude_str = f" at {altitudes.get(airport, 'unknown')}ft" if airport in altitudes else ""
         route_info.append(f"{airport}{altitude_str}")
         
-        # Fetch PIREP data for each airport
-        fetch_pirep_raw(airport)
-        filename = f"{airport}_pireps.json"
-        if os.path.exists(filename):
-            with open(filename, 'r') as f:
-                if 'pirep' not in results:
-                    results['pirep'] = {}
-                
-                try:
-                    # Extract only the most relevant PIREPs to reduce token count
-                    pirep_data = json.load(f)
-                    # Limit to most recent 20 PIREPs to reduce token count
-                    if isinstance(pirep_data, list) and len(pirep_data) > 20:
-                        pirep_data = pirep_data[:20]
-                    results['pirep'][airport] = pirep_data
-                except json.JSONDecodeError:
-                    results['pirep'][airport] = "Invalid PIREP data format"
+        # Fetch PIREP data - NO FILE SAVING
+        pirep_data = fetch_pirep_raw(airport, save_file=False)
+        if pirep_data:
+            if isinstance(pirep_data, list) and len(pirep_data) > 20:
+                pirep_data = pirep_data[:20]
+            results['pirep'][airport] = pirep_data
+        
+        # Fetch METAR data - NO FILE SAVING
+        metar_data = fetch_metar_raw(airport)
+        if metar_data:
+            results['metar'][airport] = metar_data
+        
+        # Fetch TAF data - NO FILE SAVING
+        taf_data = fetch_taf_raw(airport)
+        if taf_data:
+            results['taf'][airport] = taf_data
     
-    # Get SIGMET data for the entire route
+    # Get SIGMET data for the entire route - NO FILE SAVING
     sigmet_data, _, _ = get_sigmet_data_modified(region, hazard)
     if sigmet_data:
-        current_date = datetime.datetime.now().strftime("%Y%m%d")
-        filename = f"SIGMET_{region}_{hazard}_{current_date}.json"
-        
-        # Create output JSON with metadata but filter to reduce size
         output_json = {
             "region": region,
             "hazard": hazard,
             "timestamp": datetime.datetime.now().isoformat(),
         }
         
-        # Only include SIGMETs that might affect the route
-        # This filtering helps reduce token count
         if isinstance(sigmet_data, list):
-            # Filter SIGMETs to those most relevant to route airports
             filtered_sigmets = sigmet_data[:10]  # Take only first 10 to reduce tokens
             output_json["data"] = filtered_sigmets
         else:
             output_json["data"] = sigmet_data
         
-        # Save to JSON file
-        with open(filename, 'w') as file:
-            json.dump(output_json, file, indent=4)
-        
         results['sigmet'] = output_json
     
+    # Process each data type separately and then combine
+    component_analyses = {}
     if results:
-        processed_report = process_with_ollama(results, route_info)
+        # Process PIREPs
+        if results['pirep']:
+            pirep_prompt = process_data_with_ollama("pirep", results['pirep'], route_info)
+            component_analyses['pirep'] = f"<div class='formatted-analysis'>{pirep_prompt}</div>"
+        
+        # Process SIGMETs
+        if results['sigmet']:
+            sigmet_prompt = process_data_with_ollama("sigmet", results['sigmet'], route_info)
+            component_analyses['sigmet'] = f"<div class='formatted-analysis'>{sigmet_prompt}</div>"
+        
+        # Process METARs
+        if results['metar']:
+            metar_prompt = process_data_with_ollama("metar", results['metar'], route_info)
+            component_analyses['metar'] = f"<div class='formatted-analysis'>{metar_prompt}</div>"
+        
+        # Process TAFs
+        if results['taf']:
+            taf_prompt = process_data_with_ollama("taf", results['taf'], route_info)
+            component_analyses['taf'] = f"<div class='formatted-analysis'>{taf_prompt}</div>"
+        
+        # Generate final combined report
+        final_report = process_data_with_ollama("summary", component_analyses, route_info)
+        
+        # Generate a unique ID for this briefing
+        route_id = f"route_{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
+        
+        # Store in memory cache instead of file
+        briefing_cache[route_id] = {
+            'route_info': route_info,
+            'raw_data': results,
+            'component_analyses': component_analyses,
+            'final_report': final_report
+        }
+        
+        # Clean older entries if cache gets too big (keep last 10)
+        if len(briefing_cache) > 10:
+            oldest_key = sorted(briefing_cache.keys())[0]
+            del briefing_cache[oldest_key]
+        
         return jsonify({
             'raw_data': results,
-            'report': processed_report,
-            'route': route_info
+            'component_analyses': component_analyses,
+            'report': final_report,
+            'route': route_info,
+            'route_id': route_id
         })
     
     return jsonify({'error': 'No weather data available'})
 
-@app.route('/api/weather', methods=['POST'])
-def get_weather():
-    data = request.json
-    report_type = data.get('type')
-    results = {}
-    
-    if report_type == 'pirep' or report_type == 'both':
-        icao_code = data.get('icao')
-        if icao_code:
-            fetch_pirep_raw(icao_code)
-            filename = f"{icao_code.upper()}_pireps.json"
-            if os.path.exists(filename):
-                with open(filename, 'r') as f:
-                    results['pirep'] = json.load(f)
-    
-    if report_type == 'sigmet' or report_type == 'both':
-        # Modify to accept parameters instead of using input()
-        if report_type == 'both':
-            region = data.get('region', 'all')
-            hazard = data.get('hazard', 'all')
-            sigmet_data, _, _ = get_sigmet_data_modified(region, hazard)
-            if sigmet_data:
-                current_date = datetime.datetime.now().strftime("%Y%m%d")
-                filename = f"SIGMET_{region}_{hazard}_{current_date}.json"
-                
-                # Create output JSON with metadata
-                output_json = {
-                    "region": region,
-                    "hazard": hazard,
-                    "timestamp": datetime.datetime.now().isoformat(),
-                    "data": sigmet_data
-                }
-                
-                # Save to JSON file
-                with open(filename, 'w') as file:
-                    json.dump(output_json, file, indent=4)
-                
-                results['sigmet'] = output_json
-        else:
-            # Original implementation for standalone SIGMET
-            sigmet_data, region, hazard = get_sigmet_data()
-            if sigmet_data:
-                current_date = datetime.datetime.now().strftime("%Y%m%d")
-                filename = f"SIGMET_{region}_{hazard}_{current_date}.json"
-                if os.path.exists(filename):
-                    with open(filename, 'r') as f:
-                        results['sigmet'] = json.load(f)
-    
-    if results:
-        processed_report = process_with_ollama(results)
-        return jsonify({
-            'raw_data': results,
-            'report': processed_report
-        })
-    
-    return jsonify({'error': 'No data available'})
-
 def get_sigmet_data_modified(region, hazard):
     """Modified version of get_sigmet_data that accepts parameters instead of using input()"""
-    # Construct the API URL
     base_url = "https://aviationweather.gov/api/data/isigmet"
     params = {
         "loc": region,
@@ -319,11 +290,9 @@ def get_sigmet_data_modified(region, hazard):
     }
 
     try:
-        # Make the GET request
         response = requests.get(base_url, params=params)
-        response.raise_for_status()  # Raise an error for bad status codes
+        response.raise_for_status()
 
-        # Parse and return JSON data
         data = response.json()
         return data, region, hazard
 
