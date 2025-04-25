@@ -426,42 +426,47 @@ document.addEventListener('DOMContentLoaded', function() {
         addExpandableTileListeners();
     }
     
-    // Helper function to fix markdown formatting issues
+    // Replace the existing formatAnalysisContent function with this more robust version
     function formatAnalysisContent(content) {
         if (!content) return '';
         
         // Clean up the content by removing markdown code blocks
         let cleanedContent = content.replace(/```html|```/g, '');
         
-        // If the content is actual HTML, parse it properly
-        if (cleanedContent.includes('<')) {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(cleanedContent, 'text/html');
-            
-            // Check if parsing was successful
-            if (doc.body && doc.body.innerHTML) {
-                return doc.body.innerHTML;
-            }
+        // If the content is already HTML with proper tags, return it as is
+        if (cleanedContent.includes('<ul>') && cleanedContent.includes('<li>')) {
+            return cleanedContent;
         }
         
-        // Format potential markdown lists
+        // Format markdown lists
         cleanedContent = cleanedContent
-            // Convert markdown lists to HTML lists
-            .replace(/^\s*[-*]\s+(.+)$/gm, '<li>$1</li>')
-            .replace(/(<\/li>\n<li>)/g, '</li>\n<li>')
-            .replace(/(<li>.*<\/li>\n)+/g, '<ul>$&</ul>')
-            // Convert markdown headings to HTML headings
+            // Headers
             .replace(/^#+\s+(.+)$/gm, function(match, p1) {
-                const level = match.trim().indexOf(' ');
+                const level = (match.match(/^#+/)[0].length);
                 return `<h${level}>${p1}</h${level}>`;
             })
-            // Convert markdown emphasis to HTML emphasis
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            .replace(/\*(.*?)\*/g, '<em>$1</em>')
-            // Fix any excessive line breaks
-            .replace(/\n{3,}/g, '\n\n')
-            // Convert newlines to <br> tags
-            .replace(/\n/g, '<br>');
+            // Bold
+            .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+            // Italic
+            .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+            // Lists - bullets
+            .replace(/^[\s-]*[-*•]\s+(.+)$/gm, '<li>$1</li>')
+            // Wrap lists in <ul>
+            .replace(/(<li>.*?<\/li>)(\s*)(<li>)/g, '$1$2</ul><ul>$3')
+            .replace(/^(<li>.*<\/li>)$/gm, '<ul>$1</ul>')
+            // Fix any unclosed ul elements
+            .replace(/<ul>([^<]*)<\/ul>/g, function(match) {
+                const openUls = (match.match(/<ul>/g) || []).length;
+                const closeUls = (match.match(/<\/ul>/g) || []).length;
+                if (openUls > closeUls) {
+                    return match + '</ul>'.repeat(openUls - closeUls);
+                }
+                return match;
+            })
+            // Add severity indicators
+            .replace(/(high severity|severity:\s*high|\(high\)|severe)/gi, '<span data-severity="high">$1</span>')
+            .replace(/(medium severity|severity:\s*medium|\(medium\)|moderate)/gi, '<span data-severity="medium">$1</span>')
+            .replace(/(low severity|severity:\s*low|\(low\)|minor)/gi, '<span data-severity="low">$1</span>');
         
         return cleanedContent;
     }

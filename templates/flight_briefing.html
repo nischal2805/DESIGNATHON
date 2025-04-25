@@ -297,6 +297,53 @@
             position: relative;
             margin: 0 auto 20px;
         }
+
+        .voice-btn {
+            background: #9b59b6;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .voice-btn:hover {
+            background: #8e44ad;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        
+        .voice-btn.speaking {
+            background: #e74c3c;
+            animation: pulse-speak 1.5s infinite;
+        }
+        
+        @keyframes pulse-speak {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        .voice-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .voice-controls button {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="light-mode">
@@ -344,6 +391,9 @@
                 </div>
             </div>
             <div class="print-actions">
+                <button class="voice-btn" id="voice-summary-btn">
+                    <i class="fas fa-volume-up"></i> Voice Summary
+                </button>
                 <button class="back-btn" onclick="window.location.href='/flight-plan'">
                     <i class="fas fa-arrow-left"></i> Back to Planner
                 </button>
@@ -490,32 +540,151 @@
             const element = document.getElementById(elementId);
             if (!element) return;
             
-            let content = element.innerHTML;
+            const content = element.innerHTML;
             
-            // Check if content has proper HTML formatting
-            if (!content.includes('<ul>') && content.includes('*')) {
-                // Format markdown lists
-                content = content
-                    .replace(/\*\s+(.+?)(?:\n|$)/g, '<li>$1</li>\n')
-                    .replace(/(<li>.*?<\/li>\n)+/gs, '<ul>$&</ul>');
+            // Create a new div for parsed content
+            const parsedContent = document.createElement('div');
+            parsedContent.className = 'parsed-content';
+            
+            // Parse markdown-style formatting
+            let processedContent = content
+                // Headers
+                .replace(/^#+\s+(.+)$/gm, function(match, p1) {
+                    const level = (match.match(/^#+/)[0].length);
+                    return `<h${level}>${p1}</h${level}>`;
+                })
+                // Bold
+                .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+                // Italic
+                .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+                // Lists - bullets
+                .replace(/^[\s-]*[-*•]\s+(.+)$/gm, '<li>$1</li>')
+                // Wrap lists in <ul>
+                .replace(/(<li>.*?<\/li>)(\s*)(<li>)/g, '$1$2</ul><ul>$3')
+                .replace(/^(<li>.*<\/li>)$/gm, '<ul>$1</ul>')
+                // Links
+                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')
+                // Code blocks
+                .replace(/```([^`]+)```/g, '<pre><code>$1</code></pre>')
+                .replace(/`([^`]+)`/g, '<code>$1</code>');
+            
+            // Add severity indicators
+            processedContent = processedContent
+                // Severity indicators
+                .replace(/(high severity|severity:\s*high|\(high\)|severe)/gi, '<span data-severity="high">$1</span>')
+                .replace(/(medium severity|severity:\s*medium|\(medium\)|moderate)/gi, '<span data-severity="medium">$1</span>')
+                .replace(/(low severity|severity:\s*low|\(low\)|minor)/gi, '<span data-severity="low">$1</span>');
+            
+            // Replace empty lists
+            processedContent = processedContent
+                .replace(/<ul>\s*<\/ul>/g, '');
                 
-                // Apply severity indicators
-                content = content
-                    .replace(/(high severity|severity: high|\(high\))/gi, '<span data-severity="high">$1</span>')
-                    .replace(/(medium severity|severity: medium|\(medium\))/gi, '<span data-severity="medium">$1</span>')
-                    .replace(/(low severity|severity: low|\(low\))/gi, '<span data-severity="low">$1</span>');
-                
-                element.innerHTML = content;
+            element.innerHTML = processedContent;
+            
+            // Find any unclosed ul elements and close them
+            const openUls = (element.innerHTML.match(/<ul>/g) || []).length;
+            const closeUls = (element.innerHTML.match(/<\/ul>/g) || []).length;
+            
+            if (openUls > closeUls) {
+                element.innerHTML += '</ul>'.repeat(openUls - closeUls);
+            }
+        }
+    </script>
+    <script>
+        // Theme toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeSwitch = document.getElementById('theme-switch');
+            
+            // Apply saved theme immediately on page load
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeSwitch.checked = true;
             }
             
-            // Add proper styling to any existing data-severity items
-            element.querySelectorAll('[data-severity]').forEach(item => {
-                if (!item.className.includes('severity-')) {
-                    const severity = item.getAttribute('data-severity');
-                    item.classList.add(`severity-${severity}`);
+            themeSwitch.addEventListener('change', function() {
+                if (this.checked) {
+                    document.body.classList.add('dark-mode');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                    localStorage.setItem('theme', 'light');
                 }
             });
-        }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const voiceButton = document.getElementById('voice-summary-btn');
+            let speaking = false;
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            
+            voiceButton.addEventListener('click', function() {
+                if (speaking) {
+                    stopSpeaking();
+                } else {
+                    startSpeaking();
+                }
+            });
+            
+            function startSpeaking() {
+                // Get text from summary section
+                const summaryContent = document.getElementById('summary-content');
+                if (!summaryContent) return;
+                
+                // Strip HTML tags to get clean text
+                const textToSpeak = summaryContent.textContent.trim();
+                
+                if (textToSpeak) {
+                    speaking = true;
+                    voiceButton.classList.add('speaking');
+                    voiceButton.innerHTML = '<i class="fas fa-stop"></i> Stop Speaking';
+                    
+                    // Use Speech Synthesis API
+                    currentUtterance = new SpeechSynthesisUtterance(textToSpeak);
+                    
+                    // Try to find a good voice
+                    const voices = speechSynthesis.getVoices();
+                    const englishVoices = voices.filter(voice => voice.lang.includes('en-'));
+                    
+                    if (englishVoices.length > 0) {
+                        // Prefer natural sounding voices
+                        const preferredVoice = englishVoices.find(voice => 
+                            voice.name.includes('Natural') || voice.name.includes('Premium')
+                        ) || englishVoices[0];
+                        
+                        currentUtterance.voice = preferredVoice;
+                    }
+                    
+                    // Set properties
+                    currentUtterance.rate = 1.0;
+                    currentUtterance.pitch = 1.0;
+                    
+                    // When speech ends
+                    currentUtterance.onend = function() {
+                        speaking = false;
+                        voiceButton.classList.remove('speaking');
+                        voiceButton.innerHTML = '<i class="fas fa-volume-up"></i> Voice Summary';
+                    };
+                    
+                    speechSynthesis.speak(currentUtterance);
+                }
+            }
+            
+            function stopSpeaking() {
+                if (speaking) {
+                    speechSynthesis.cancel();
+                    speaking = false;
+                    voiceButton.classList.remove('speaking');
+                    voiceButton.innerHTML = '<i class="fas fa-volume-up"></i> Voice Summary';
+                }
+            }
+            
+            // Stop speech when navigating away
+            window.addEventListener('beforeunload', function() {
+                stopSpeaking();
+            });
+        });
     </script>
 </body>
 </html>

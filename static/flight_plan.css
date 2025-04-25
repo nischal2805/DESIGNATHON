@@ -31,6 +31,40 @@ body.dark-mode {
     --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
+.dark-mode .weather-component {
+    background: #2c3e50;
+    color: #ecf0f1;
+}
+
+.dark-mode .component-header {
+    border-bottom-color: #4a6278;
+}
+
+.dark-mode pre {
+    background: #1a1a1a !important;
+    color: #ecf0f1;
+}
+
+.dark-mode .tabs {
+    border-bottom-color: #4a6278;
+}
+
+.dark-mode .tab.active {
+    color: white;
+}
+
+.dark-mode [data-severity="high"] {
+    color: #ff6b6b;
+}
+
+.dark-mode [data-severity="medium"] {
+    color: #feca57;
+}
+
+.dark-mode [data-severity="low"] {
+    color: #48dbfb;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
